@@ -1,4 +1,4 @@
 # React
 
 ### 📁참고 강의
-- 유데미 : React 완벽 가이드 with Redux, Next.js, TypeScript
+- 노마드코더 : ReactJS로 영화 웹 서비스 만들기
