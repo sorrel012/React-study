@@ -1,0 +1,25 @@
+{
+  "name": "react-study",
+  "version": "1.0.0",
+  "description": "React Study Notes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sorrel012@gmail.com",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sorrel012/react-study.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "bugs": {
+    "url": "https://github.com/sorrel012/react-study/issues"
+  },
+  "homepage": "https://github.com/sorrel012/react-study#readme",
+  "devDependencies": {
+    "prettier": "3.1.1"
+  }
+}
