@@ -1,11 +1,23 @@
 import React from 'react';
 import Comment from './Comment';
 
+const comments = [
+  {
+    name: 'Hana',
+    comment: '나무의 하루',
+  },
+  {
+    name: 'sorrel012',
+    comment: '안녕하세요',
+  },
+];
+
 function CommentList(props) {
   return (
     <div>
-      <Comment name={'Hana'} comment={'나무의 하루'} />
-      <Comment name={'sorrel012'} comment={'안녕하세요~'} />
+      {comments.map((comment) => (
+        <Comment name={comment.name} comment={comment.comment} />
+      ))}
     </div>
   );
 }
