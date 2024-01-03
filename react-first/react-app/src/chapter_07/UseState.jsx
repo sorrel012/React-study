@@ -6,7 +6,7 @@ const styles = {
   },
 };
 
-function Counter(props) {
+function UseState(props) {
   const [count, setCount] = useState(1);
 
   return (
@@ -17,4 +17,4 @@ function Counter(props) {
   );
 }
 
-export default Counter;
+export default UseState;
