@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 
 const styles = {
   margin: {
@@ -6,32 +6,50 @@ const styles = {
   },
 };
 
-class EventHandler extends React.Component {
-  constructor(props) {
-    super(props);
+// class EventHandler extends React.Component {
+//   constructor(props) {
+//     super(props);
+//
+//     this.state = {
+//       isConfirmed: false,
+//     };
+//   }
+//
+//   handleConfirm = () => {
+//     this.setState((prevState) => ({
+//       isConfirmed: !prevState.isConfirmed,
+//     }));
+//   };
+//
+//   render() {
+//     return (
+//       <button
+//         onClick={this.handleConfirm}
+//         disabled={this.state.isConfirmed}
+//         style={styles.margin}
+//       >
+//         {this.state.isConfirmed ? '확인 완료' : '확인 필요'}
+//       </button>
+//     );
+//   }
+// }
 
-    this.state = {
-      isConfirmed: false,
-    };
-  }
+function EventHandler(props) {
+  const [isConfirmed, setIsConfirmed] = useState(false);
 
-  handleConfirm = () => {
-    this.setState((prevState) => ({
-      isConfirmed: !prevState.isConfirmed,
-    }));
+  const handleConfirm = () => {
+    setIsConfirmed((prevIsConfirmed) => !prevIsConfirmed);
   };
 
-  render() {
-    return (
-      <button
-        onClick={this.handleConfirm}
-        disabled={this.state.isConfirmed}
-        style={styles.margin}
-      >
-        {this.state.isConfirmed ? '확인 완료' : '확인 필요'}
-      </button>
-    );
-  }
+  return (
+    <button
+      onClick={handleConfirm}
+      disabled={isConfirmed}
+      style={styles.margin}
+    >
+      {isConfirmed ? '확인 완료' : '확인 필요'}
+    </button>
+  );
 }
 
 export default EventHandler;
