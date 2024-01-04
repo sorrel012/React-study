@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Accommodate from './chapter_07/Accommodate';
+import EventHandler from './chapter_08/EventHandler';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Accommodate />
+    <EventHandler />
   </React.StrictMode>,
 );
 
