@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import EventHandler from './chapter_08/EventHandler';
+import LandingPage from './chapter_09/LandingPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <EventHandler />
+    <LandingPage />
   </React.StrictMode>,
 );
 
