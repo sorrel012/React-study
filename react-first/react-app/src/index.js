@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import LandingPage from './chapter_09/LandingPage';
+import Attendance from './chapter_10/Attendance';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <LandingPage />
+    <Attendance />
   </React.StrictMode>,
 );
 
