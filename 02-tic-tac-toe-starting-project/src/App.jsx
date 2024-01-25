@@ -24,12 +24,10 @@ function App() {
     setGameTurns((prevTurns) => {
       const currentPlayer = deriveActivePlayer(prevTurns);
 
-      const updatedTurns = [
+      return [
         { square: { row: rowIndex, col: colIndex }, player: currentPlayer },
         ...prevTurns,
       ];
-
-      return updatedTurns;
     });
   }
 
