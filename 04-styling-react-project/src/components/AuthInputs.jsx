@@ -27,8 +27,9 @@ export default function AuthInputs() {
           <label>Email</label>
           <input
             type="email"
-            className={emailNotValid ? 'invalid' : undefined}
+            // className={emailNotValid ? 'invalid' : undefined}
             onChange={(event) => handleInputChange('email', event.target.value)}
+            style={{ backgroundColor: emailNotValid ? '#fed2d2' : '#d1d5db' }}
           />
         </p>
         <p>
@@ -46,7 +47,9 @@ export default function AuthInputs() {
         <button type="button" className="text-button">
           Create a new account
         </button>
-        <button className='button' onClick={handleLogin}>Sign In</button>
+        <button className="button" onClick={handleLogin}>
+          Sign In
+        </button>
       </div>
     </div>
   );
