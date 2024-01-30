@@ -1,10 +1,8 @@
 import { calculateInvestmentResults, formatter } from '../util/investment.js';
 
-const results = [];
-
 export default function Results({ input }) {
+  const results = [];
   calculateInvestmentResults(input, results);
-
   if (results.length < 1) {
     return <p className="center">Invalid input data provided.</p>;
   }
