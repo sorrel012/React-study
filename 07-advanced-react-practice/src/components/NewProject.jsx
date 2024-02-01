@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from 'postcss';
+import Input from './Input.jsx';
 
 function NewProject() {
   return (
