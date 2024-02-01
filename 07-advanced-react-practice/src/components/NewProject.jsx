@@ -33,9 +33,15 @@ function NewProject({ onAddProject }) {
   return (
     <>
       <Modal ref={modal} buttonCaption="Okay">
-        <h2>Invalid Input</h2>
-        <p>Oops ... looks like you forgot to enter a value.</p>
-        <p>Please make sure you provide a valid value for every input field.</p>
+        <h2 className="my-2 text-center text-3xl font-bold text-stone-500">
+          Invalid Input
+        </h2>
+        <p className="mb-2 mt-4 text-lg text-stone-700">
+          Oops ... looks like you forgot to enter a value.
+        </p>
+        <p className="mb-3 text-lg text-stone-700">
+          Please make sure you provide a valid value for every input field.
+        </p>
       </Modal>
       <div className="mt-16 w-[35rem]">
         <menu className="my-4 flex items-center justify-end gap-4">
