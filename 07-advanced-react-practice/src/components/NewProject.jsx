@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import Input from './Input.jsx';
 import Modal from './Modal.jsx';
 
-function NewProject({ onAddProject }) {
+function NewProject({ onAddProject, onCancleAddProject }) {
   const modal = useRef();
 
   const title = useRef();
@@ -46,7 +46,10 @@ function NewProject({ onAddProject }) {
       <div className="mt-16 w-[35rem]">
         <menu className="my-4 flex items-center justify-end gap-4">
           <li>
-            <button className="text-stone-800 hover:text-stone-950">
+            <button
+              className="text-stone-800 hover:text-stone-950"
+              onClick={onCancleAddProject}
+            >
               Cancel
             </button>
           </li>
