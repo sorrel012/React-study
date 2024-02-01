@@ -122,7 +122,7 @@ function App() {
         onSelectProject={handleSelectProject}
         onStartAddProject={handleStartAddProject}
         projects={projectsState.projects}
-        selectedProjectId={projectsState.projects.selectedProjectId}
+        selectedProjectId={projectsState.selectedProjectId}
       />
       {content}
     </main>
