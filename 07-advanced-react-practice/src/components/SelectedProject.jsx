@@ -7,6 +7,7 @@ function SelectedProject({
   onDeleteProject,
   onAddTask,
   onDeleteTask,
+  tasks,
 }) {
   const formattedDate = new Date(project.dueDate).toLocaleDateString('ko-KR', {
     year: 'numeric',
@@ -28,7 +29,7 @@ function SelectedProject({
           {project.description}
         </p>
       </header>
-      <Tasks onAdd={onAddTask} onDelete={onDeleteTask} />
+      <Tasks onAdd={onAddTask} onDelete={onDeleteTask} tasks={tasks} />
     </div>
   );
 }
