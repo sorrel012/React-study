@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/sorrel012/react-study#readme",
   "devDependencies": {
-    "prettier": "3.1.1"
+    "prettier": "^3.1.1",
+    "prettier-plugin-tailwindcss": "^0.5.11"
   }
 }
