@@ -1,6 +1,7 @@
 import React from 'react';
+import Button from './Button.jsx';
 
-function SelectedProject({ project }) {
+function SelectedProject({ project, onDeleteProject }) {
   const formattedDate = new Date(project.dueDate).toLocaleDateString('ko-KR', {
     year: 'numeric',
     month: 'numeric',
@@ -14,9 +15,7 @@ function SelectedProject({ project }) {
           <h1 className="mb-2 text-3xl font-bold text-stone-600">
             {project.title}
           </h1>
-          <button className="text-stone-600 hover:text-stone-950">
-            Delete
-          </button>
+          <Button onClick={onDeleteProject}>Delete</Button>
         </div>
         <p className="mb-4 text-stone-400">{formattedDate}</p>
         <p className="whitespace-pre-wrap text-stone-600">
