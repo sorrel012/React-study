@@ -2,7 +2,7 @@ import React from 'react';
 import noProjectImage from '../assets/no-projects.png';
 import Button from './Button.jsx';
 
-function NoProjectSeleted() {
+function NoProjectSelected() {
   return (
     <div className="mt-24 w-2/3 text-center">
       <img
