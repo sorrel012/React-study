@@ -23,4 +23,4 @@ function NoProjectSelected() {
   );
 }
 
-export default NoProjectSeleted;
+export default NoProjectSelected;
