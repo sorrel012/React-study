@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 function NewTask({ onAdd, onDelete }) {
-  const [enteredTask, setEnteredTask] = useState();
+  const [enteredTask, setEnteredTask] = useState('');
 
   function handleChange(event) {
     setEnteredTask(event.target.value);
