@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Input({ label, isTextarea, ...props }) {
+function Input({ label, textarea, ...props }) {
   return (
     <p>
       <label>{label}</label>
-      {isTextarea ? <textarea {...props} /> : <input {...props} />}
+      {textarea ? <textarea {...props} /> : <input {...props} />}
     </p>
   );
 }
