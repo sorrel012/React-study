@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button.jsx';
+import Tasks from './Tasks.jsx';
 
 function SelectedProject({ project, onDeleteProject }) {
   const formattedDate = new Date(project.dueDate).toLocaleDateString('ko-KR', {
@@ -22,6 +23,7 @@ function SelectedProject({ project, onDeleteProject }) {
           {project.description}
         </p>
       </header>
+      <Tasks />
     </div>
   );
 }
