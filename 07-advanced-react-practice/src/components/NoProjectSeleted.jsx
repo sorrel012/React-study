@@ -1,5 +1,6 @@
 import React from 'react';
 import noProjectImage from '../assets/no-projects.png';
+import Button from './Button.jsx';
 
 function NoProjectSeleted() {
   return (
@@ -7,14 +8,16 @@ function NoProjectSeleted() {
       <img
         src={noProjectImage}
         alt="An empty task list"
-        className="h-16 w-16"
+        className="mx-auto h-16 w-16 object-contain"
       />
       <h2 className="my-4 text-xl font-bold text-stone-500">
         No Project Selected
       </h2>
-      <p>Select a project or get started with a new one</p>
-      <p>
-        <button>Create new project</button>
+      <p className="mb-4 text-stone-400">
+        Select a project or get started with a new one
+      </p>
+      <p className="mt-8">
+        <Button>Create new project</Button>
       </p>
     </div>
   );
