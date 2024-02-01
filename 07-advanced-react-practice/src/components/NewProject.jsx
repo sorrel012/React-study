@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import Input from './Input.jsx';
 
-function NewProject() {
+function NewProject({ onAddProject }) {
   const title = useRef();
   const description = useRef();
   const dueDate = useRef();
@@ -10,6 +10,12 @@ function NewProject() {
     const enteredTitle = title.current.value;
     const enteredDescription = description.current.value;
     const enteredDueDate = dueDate.current.value;
+
+    onAddProject({
+      title: enteredTitle,
+      description: enteredDescription,
+      dueDate: enteredDueDate,
+    });
   }
 
   return (
