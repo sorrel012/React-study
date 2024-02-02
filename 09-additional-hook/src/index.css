@@ -147,7 +147,6 @@ header p {
 }
 
 #delete-confirmation p {
-  margin: 0 auto;
   font-size: 1.15rem;
   max-width: 38ch;
   color: #804242;
@@ -186,6 +185,10 @@ header p {
   color: #5d0909;
 }
 
+.button-text:hover {
+  cursor: pointer;
+}
+
 .modal::backdrop {
   position: fixed;
   top: 0;
@@ -197,7 +200,7 @@ header p {
 }
 
 .modal {
-  min-width: 30rem;;
+  min-width: 30rem;
   padding: 0;
   z-index: 2;
   background: #d5c7bc;
