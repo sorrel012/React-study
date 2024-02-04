@@ -19,8 +19,7 @@ function Answers({ answers, selectedAnswer, answerState, onSelect }) {
         }
 
         if (
-          answerState === 'correct' ||
-          answerState === 'wrong' ||
+          (answerState === 'correct' || answerState === 'wrong') &&
           isSelected
         ) {
           cssClass = answerState;
