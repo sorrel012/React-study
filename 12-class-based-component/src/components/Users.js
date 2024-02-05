@@ -15,13 +15,12 @@ class Users extends Component {
     this.state = {
       showUsers: true,
     };
-    this.toggleUsersHandler = this.toggleUsersHandler.bind(this);
   }
-  toggleUsersHandler() {
+  toggleUsersHandler = () => {
     this.setState((curState) => {
       return { showUsers: !curState.showUsers };
     });
-  }
+  };
 
   render() {
     const usersList = (
