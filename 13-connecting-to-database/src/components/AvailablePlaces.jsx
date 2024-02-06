@@ -31,6 +31,7 @@ export default function AvailablePlaces({ onSelectPlace }) {
       setIsFetching(false);
     }
   }
+
   useEffect(() => {
     fetchPlaces();
   }, []);
