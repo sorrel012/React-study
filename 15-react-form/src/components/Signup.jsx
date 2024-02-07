@@ -5,6 +5,8 @@ export default function Signup() {
     const fd = new FormData(event.target);
     const data = Object.fromEntries(fd.entries());
     data.acquisition = fd.getAll('acquisition');
+
+    event.target.reset();
   }
 
   return (
