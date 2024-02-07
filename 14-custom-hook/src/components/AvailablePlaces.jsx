@@ -25,7 +25,7 @@ export default function AvailablePlaces({ onSelectPlace }) {
     isFetching,
     error,
     fetchedData: availablePlaces,
-  } = useFetch(fetchAvailablePlaces, []);
+  } = useFetch(fetchSortedPlaces, []);
 
   if (error) {
     return <Error title="An error occurred!" message={error.message} />;
