@@ -55,7 +55,7 @@ export default function StateLogin() {
             value={enteredValue.email}
           />
           <div className="control-error">
-            {emailIsValid && <p>Please enter a valid email addres.</p>}
+            {emailIsValid && <p>Please enter a valid email address.</p>}
           </div>
         </div>
 
