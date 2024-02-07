@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Input from './Input.jsx';
 
 export default function StateLogin() {
   const [enteredValue, setEnteredValue] = useState({
@@ -11,7 +12,9 @@ export default function StateLogin() {
     password: false,
   });
 
-  const emailIsValid = didEdit.email && !enteredValue.email.includes('@');
+  const emailIsInvalid = didEdit.email && !enteredValue.email.includes('@');
+  const passwordIsInvalid =
+    didEdit.password && enteredValue.password.trim().length < 6;
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -44,33 +47,28 @@ export default function StateLogin() {
       <h2>Login</h2>
 
       <div className="control-row">
-        <div className="control no-margin">
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            onBlur={() => handleInputBlur('email')}
-            onChange={(event) => handleInputChange('email', event.target.value)}
-            value={enteredValue.email}
-          />
-          <div className="control-error">
-            {emailIsValid && <p>Please enter a valid email address.</p>}
-          </div>
-        </div>
+        <Input
+          label="Email"
+          id="email"
+          type="email"
+          name="email"
+          onBlur={() => handleInputBlur('email')}
+          onChange={(event) => handleInputChange('email', event.target.value)}
+          value={enteredValue.email}
+          error={emailIsInvalid && 'please enter a valid email.'}
+        />
 
-        <div className="control no-margin">
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            onChange={(event) =>
-              handleInputChange('password', event.target.value)
-            }
-            value={enteredValue.password}
-          />
-        </div>
+        <Input
+          label="Password"
+          id="password"
+          type="password"
+          name="password"
+          onChange={(event) =>
+            handleInputChange('password', event.target.value)
+          }
+          value={enteredValue.password}
+          error={passwordIsInvalid && 'please enter a valid password.'}
+        />
       </div>
 
       <p className="form-actions">
