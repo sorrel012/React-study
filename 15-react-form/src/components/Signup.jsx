@@ -1,10 +1,19 @@
+import { useState } from 'react';
+
 export default function Signup() {
+  const [passwordAreNotEqual, setPasswordAreNotEqual] = useState(false);
+
   function handleSubmit(event) {
     event.preventDefault();
 
     const fd = new FormData(event.target);
     const data = Object.fromEntries(fd.entries());
     data.acquisition = fd.getAll('acquisition');
+
+    if (data.password !== data['confirm-password']) {
+      setPasswordAreNotEqual(true);
+      return;
+    }
 
     event.target.reset();
   }
@@ -39,6 +48,9 @@ export default function Signup() {
             name="confirm-password"
             required
           />
+          <div className="control-error">
+            {passwordAreNotEqual && <p>Password must match.</p>}
+          </div>
         </div>
       </div>
 
