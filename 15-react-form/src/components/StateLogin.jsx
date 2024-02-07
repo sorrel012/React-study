@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import Input from './Input.jsx';
+import { hasMinLength, isEmail, isNotEmpty } from '../util/validation.js';
 
 export default function StateLogin() {
-  const [enteredValue, setEnteredValue] = useState({
+  const [enteredValues, setEnteredValues] = useState({
     email: '',
     password: '',
   });
@@ -12,20 +13,23 @@ export default function StateLogin() {
     password: false,
   });
 
-  const emailIsInvalid = didEdit.email && !enteredValue.email.includes('@');
+  const emailIsInvalid =
+    didEdit.email &&
+    !isEmail(enteredValues.email) &&
+    !isNotEmpty(enteredValues.email);
   const passwordIsInvalid =
-    didEdit.password && enteredValue.password.trim().length < 6;
+    didEdit.password && !hasMinLength(enteredValues.password, 6);
 
   function handleSubmit(event) {
     event.preventDefault();
-    setEnteredValue({
+    setEnteredValues({
       email: '',
       password: '',
     });
   }
 
   function handleInputChange(identifier, value) {
-    setEnteredValue((prevValues) => ({
+    setEnteredValues((prevValues) => ({
       ...prevValues,
       [identifier]: value,
     }));
@@ -54,7 +58,7 @@ export default function StateLogin() {
           name="email"
           onBlur={() => handleInputBlur('email')}
           onChange={(event) => handleInputChange('email', event.target.value)}
-          value={enteredValue.email}
+          value={enteredValues.email}
           error={emailIsInvalid && 'please enter a valid email.'}
         />
 
@@ -66,7 +70,7 @@ export default function StateLogin() {
           onChange={(event) =>
             handleInputChange('password', event.target.value)
           }
-          value={enteredValue.password}
+          value={enteredValues.password}
           error={passwordIsInvalid && 'please enter a valid password.'}
         />
       </div>
