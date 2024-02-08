@@ -1,5 +1,6 @@
 import React from 'react';
 import logoImg from '../assets/logo.jpg';
+import Button from './UI/Button.jsx';
 
 function Header({ onClickButton }) {
   return (
@@ -10,9 +11,9 @@ function Header({ onClickButton }) {
         <h1></h1>
       </div>
       <nav>
-        <button onClick={onClickButton} className="text-button">
+        <Button onClick={onClickButton} textOnly>
           Cart (3)
-        </button>
+        </Button>
       </nav>
     </header>
   );
