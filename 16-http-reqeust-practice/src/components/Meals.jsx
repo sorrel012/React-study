@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { addCartItem, getMeals } from '../plugins/mealAxios.js';
+import MealItem from './MealItem.jsx';
 
 function loadedMeals() {
   const [loadedMeals, setLoadedMeals] = useState([]);
@@ -22,27 +23,7 @@ function loadedMeals() {
   return (
     <ul id="meals">
       {loadedMeals.map((meal) => {
-        return (
-          <li key={meal.id} className="meal-item">
-            <div>
-              <article>
-                <img
-                  src={`http://localhost:3000/${meal.image}`}
-                  alt="Meal img"
-                />
-                <h3>{meal.name}</h3>
-                <div className="meal-item-price">{meal.price}</div>
-                <div className="meal-item-description">{meal.description}</div>
-              </article>
-              <button
-                className="button meal-item-actions"
-                onClick={() => handleAddCart(meal)}
-              >
-                Add to Cart
-              </button>
-            </div>
-          </li>
-        );
+        return <MealItem key={meal.id} meal={meal} />;
       })}
     </ul>
   );
