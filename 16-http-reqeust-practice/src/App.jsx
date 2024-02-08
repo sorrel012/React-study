@@ -1,8 +1,9 @@
 import Header from './components/Header.jsx';
 import Meals from './components/Meals.jsx';
 import React, { useRef } from 'react';
-import CartModal from './components/CartModal.jsx';
 import { CartContextProvider } from './store/CarContext.jsx';
+import Cart from './components/Cart.jsx';
+import { UserProgressContextProvider } from './store/UserProgressContext.jsx';
 
 function App() {
   const dialog = useRef();
@@ -12,11 +13,13 @@ function App() {
   }
 
   return (
-    <CartContextProvider>
-      <CartModal ref={dialog} />
-      <Header onClickButton={handleClick} />
-      <Meals />
-    </CartContextProvider>
+    <UserProgressContextProvider>
+      <CartContextProvider>
+        <Header onClickButton={handleClick} />
+        <Meals />
+        <Cart />
+      </CartContextProvider>
+    </UserProgressContextProvider>
   );
 }
 
