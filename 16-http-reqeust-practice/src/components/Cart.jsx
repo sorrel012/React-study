@@ -24,7 +24,12 @@ function Cart() {
       <h2>Your Cart</h2>
       <ul>
         {cartCtx.items.map((item) => (
-          <CartItem key={item.id} {...item} />
+          <CartItem
+            key={item.id}
+            {...item}
+            onIncrease={() => cartCtx.addItem(item)}
+            onDecrease={() => cartCtx.removeItem(item.id)}
+          />
         ))}
       </ul>
       <p className="cart-total">{currencyFormatter.format(cartTotalPrice)}</p>
