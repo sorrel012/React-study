@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export async function getMealsData() {
+export async function getMeals() {
   let status = '';
   let result = '';
 

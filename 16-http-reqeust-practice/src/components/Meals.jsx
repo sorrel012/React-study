@@ -1,16 +1,29 @@
-import React from 'react';
-import { addCartItem } from '../plugins/mealAxios.js';
+import React, { useEffect, useState } from 'react';
+import { addCartItem, getMeals } from '../plugins/mealAxios.js';
 
-function Meals({ meals }) {
+function loadedMeals() {
+  const [loadedMeals, setLoadedMeals] = useState([]);
+
+  useEffect(() => {
+    async function getLoadedMeals() {
+      const data = await getMeals();
+      if (data.status === 'SUCCESS') {
+        setLoadedMeals(data.result);
+      }
+    }
+
+    getLoadedMeals();
+  }, []);
+
   async function handleAddCart(meal) {
     const result = addCartItem(meal);
   }
 
   return (
-    <div id="meals">
-      {meals.map((meal) => {
+    <ul id="meals">
+      {loadedMeals.map((meal) => {
         return (
-          <div key={meal.id} className="meal-item">
+          <li key={meal.id} className="meal-item">
             <div>
               <article>
                 <img
@@ -28,11 +41,11 @@ function Meals({ meals }) {
                 Add to Cart
               </button>
             </div>
-          </div>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 }
 
-export default Meals;
+export default loadedMeals;
