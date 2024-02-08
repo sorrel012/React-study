@@ -30,7 +30,7 @@ function cartReducer(state, action) {
 
   if (action.type === 'REMOVE_ITEM') {
     const existingCartItemIndex = state.items.findIndex(
-      (item) => item.id === action.item.id,
+      (item) => item.id === action.id,
     );
 
     const existingCartItem = state.items[existingCartItemIndex];
@@ -53,10 +53,24 @@ function cartReducer(state, action) {
 }
 
 export function CartContextProvider({ children }) {
-  const [cartState, cartDispatch] = useReducer(cartReducer, { items: [] });
+  const [cart, dispatchCartAction] = useReducer(cartReducer, { items: [] });
+
+  function addItem(item) {
+    dispatchCartAction({ type: 'ADD_ITEM', item });
+  }
+
+  function removeItem(id) {
+    dispatchCartAction({ type: 'REMOVE_ITEM', id });
+  }
+
+  const cartContext = {
+    items: cart,
+    addItem,
+    removeItem,
+  };
 
   return (
-    <CartContext.Provider value={cartState}>{children}</CartContext.Provider>
+    <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>
   );
 }
 
