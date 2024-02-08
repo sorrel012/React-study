@@ -1,9 +1,12 @@
 import Header from './components/Header.jsx';
 import Meals from './components/Meals.jsx';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getMealsData } from './plugins/mealAxios.js';
+import CartModal from './components/CartModal.jsx';
 
 function App() {
+  const dialog = useRef();
+
   const [meals, setMeals] = useState([]);
 
   async function getMeals() {
@@ -17,9 +20,14 @@ function App() {
     getMeals();
   }, []);
 
+  function handleClick() {
+    dialog.current.open();
+  }
+
   return (
     <>
-      <Header />
+      <CartModal ref={dialog} />
+      <Header onClick={handleClick} />
       <Meals meals={meals} />
     </>
   );
