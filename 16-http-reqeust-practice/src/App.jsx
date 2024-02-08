@@ -27,7 +27,7 @@ function App() {
   return (
     <>
       <CartModal ref={dialog} />
-      <Header onClick={handleClick} />
+      <Header onClickButton={handleClick} />
       <Meals meals={meals} />
     </>
   );

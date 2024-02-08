@@ -12,6 +12,10 @@ const CartModal = forwardRef(function CartModal(props, ref) {
     };
   });
 
+  function handleClose() {
+    dialog.current.close();
+  }
+
   return createPortal(
     <dialog className="cart modal" ref={dialog}>
       <h2>Your Cart</h2>
@@ -27,7 +31,9 @@ const CartModal = forwardRef(function CartModal(props, ref) {
       </ul>
       <div className="cart-total">$53.97</div>
       <div className="modal-actions">
-        <span className="text-button">Close</span>
+        <span className="text-button" onClick={handleClose}>
+          Close
+        </span>
         <button className="button">Go to Checkout</button>
       </div>
     </dialog>,
