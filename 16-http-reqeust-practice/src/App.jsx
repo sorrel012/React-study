@@ -4,6 +4,7 @@ import React, { useRef } from 'react';
 import { CartContextProvider } from './store/CarContext.jsx';
 import Cart from './components/Cart.jsx';
 import { UserProgressContextProvider } from './store/UserProgressContext.jsx';
+import Checkout from './components/Checkout.jsx';
 
 function App() {
   const dialog = useRef();
@@ -18,6 +19,7 @@ function App() {
         <Header onClickButton={handleClick} />
         <Meals />
         <Cart />
+        <Checkout />
       </CartContextProvider>
     </UserProgressContextProvider>
   );
