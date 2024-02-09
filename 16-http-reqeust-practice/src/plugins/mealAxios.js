@@ -26,8 +26,6 @@ export async function getMeals() {
 export async function saveOrder(ordersItem, customerData) {
   let status = '';
 
-  console.log(customerData);
-
   const order = {
     customer: customerData,
     items: ordersItem,
