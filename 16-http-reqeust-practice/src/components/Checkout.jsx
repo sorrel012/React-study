@@ -27,7 +27,14 @@ function Checkout() {
     const customerData = Object.fromEntries(fd.entries());
 
     const result = await saveOrder(cartCtx.items, customerData);
-    console.log(result);
+
+    if (result.status === 'SUCCESS') {
+      alert('주문이 완료되었습니다.');
+      cartCtx.items = [];
+      handleClose();
+    } else {
+      alert('주문에 실패했습니다. 다음에 다시 시도해주세요.');
+    }
   }
 
   return (
