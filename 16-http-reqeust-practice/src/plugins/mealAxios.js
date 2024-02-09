@@ -1,30 +1,35 @@
 import axios from 'axios';
 
 export async function getMeals() {
-  let status = '';
-  let result = '';
+  let data = {
+    status: '',
+    result: '',
+    isLoading: true,
+  };
 
   await axios
     .get('http://localhost:3000/meals')
     .then((response) => {
       if (response.statusText === 'OK') {
-        status = 'SUCCESS';
-        result = response.data;
+        data.status = 'SUCCESS';
+        data.result = response.data;
       }
     })
     .catch(() => {
-      status = 'FAIL';
-      result = 'Failed to get meals.';
+      data.status = 'FAIL';
+      data.result = 'Failed to get meals.';
     });
 
-  return {
-    status,
-    result,
-  };
+  data.isLoading = false;
+
+  return data;
 }
 
 export async function saveOrder(ordersItem, customerData) {
-  let status = '';
+  let data = {
+    status: '',
+    isLoading: true,
+  };
 
   const order = {
     customer: customerData,
@@ -35,14 +40,14 @@ export async function saveOrder(ordersItem, customerData) {
     .post('http://localhost:3000/orders', order)
     .then((response) => {
       if (response.statusText === 'Created') {
-        status = 'SUCCESS';
+        data.status = 'SUCCESS';
       }
     })
     .catch(() => {
-      status = 'FAIL';
+      data.status = 'FAIL';
     });
 
-  return {
-    status,
-  };
+  data.isLoading = false;
+
+  return data;
 }

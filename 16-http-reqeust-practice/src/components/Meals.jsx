@@ -8,8 +8,17 @@ function loadedMeals() {
   useEffect(() => {
     async function getLoadedMeals() {
       const data = await getMeals();
+
+      if (data.isLoading) {
+        return <p className="center">Fetching meals...</p>;
+      }
+
       if (data.status === 'SUCCESS') {
         setLoadedMeals(data.result);
+      }
+
+      if (data.status === 'FAIL') {
+        alert(data.result);
       }
     }
 
