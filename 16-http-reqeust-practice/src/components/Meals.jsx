@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { addCartItem, getMeals } from '../plugins/mealAxios.js';
+import { getMeals } from '../plugins/mealAxios.js';
 import MealItem from './MealItem.jsx';
 
 function loadedMeals() {
@@ -15,10 +15,6 @@ function loadedMeals() {
 
     getLoadedMeals();
   }, []);
-
-  async function handleAddCart(meal) {
-    const result = addCartItem(meal);
-  }
 
   return (
     <ul id="meals">
