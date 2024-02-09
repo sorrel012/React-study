@@ -23,16 +23,10 @@ export async function getMeals() {
   };
 }
 
-export async function addCartItem(ordersItem) {
+export async function saveOrder(ordersItem, customerData) {
   let status = '';
 
-  const customerData = {
-    email: 'wain1719@gmail.com',
-    name: 'Hana',
-    street: 'Beobwon-ro',
-    'postal-code': '53405',
-    city: 'Seoul',
-  };
+  console.log(customerData);
 
   const order = {
     customer: customerData,
@@ -42,7 +36,7 @@ export async function addCartItem(ordersItem) {
   await axios
     .post('http://localhost:3000/orders', order)
     .then((response) => {
-      if (response.statusText === 'OK') {
+      if (response.statusText === 'Created') {
         status = 'SUCCESS';
       }
     })
