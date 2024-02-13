@@ -15,7 +15,12 @@ export const fetchCarData = () => {
     await axios
       .get('https://react-http-dd472-default-rtdb.firebaseio.com/cart.json')
       .then((response) => {
-        dispatch(cartActions.replaceCart(response.data));
+        dispatch(
+          cartActions.replaceCart({
+            items: response.data.items || [],
+            totalQuantity: response.data.totalQuantity,
+          }),
+        );
 
         dispatch(
           uiActions.showNotification({
