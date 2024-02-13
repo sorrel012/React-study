@@ -7,6 +7,8 @@ import axios from 'axios';
 import { uiActions } from './store/ui-slice';
 import Notification from './components/UI/Notification';
 
+let isInitial = true;
+
 function App() {
   const dispatch = useDispatch();
   const showCart = useSelector((state) => state.ui.cartIsVisible);
@@ -15,6 +17,11 @@ function App() {
 
   useEffect(() => {
     const sendCartData = async () => {
+      if (isInitial) {
+        isInitial = false;
+        return;
+      }
+
       dispatch(
         uiActions.showNotification({
           status: 'pending',
@@ -46,6 +53,7 @@ function App() {
           );
         });
     };
+
     sendCartData();
   }, [cart, dispatch]);
 
@@ -53,7 +61,7 @@ function App() {
     <Fragment>
       {notification && (
         <Notification
-          status={notification.state}
+          status={notification.status}
           title={notification.title}
           message={notification.message}
         />
