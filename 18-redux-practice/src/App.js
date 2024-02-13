@@ -46,6 +46,7 @@ function App() {
           );
         });
     };
+    sendCartData();
   }, [cart, dispatch]);
 
   return (
