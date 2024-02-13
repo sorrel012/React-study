@@ -1,18 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { uiActions } from './ui-slice';
-import axios from 'axios';
 
 const cartSlice = createSlice({
   name: 'cart',
   initialState: {
     items: [],
     totalQuantity: 0,
+    changed: false,
   },
   reducers: {
+    replaceCart(state, action) {
+      state.totalQuantity = action.payload.totalQuantity;
+      state.items = action.payload.items;
+    },
     addItemToCart(state, action) {
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item.id === newItem.id);
       state.totalQuantity++;
+      state.changed = true;
       if (!existingItem) {
         state.items.push({
           id: newItem.id,
@@ -30,6 +34,7 @@ const cartSlice = createSlice({
       const itemId = action.payload;
       const existingItem = state.items.find((item) => item.id === itemId);
       state.totalQuantity--;
+      state.changed = true;
       if (existingItem === 1) {
         state.items = state.items.filter((item) => item.id !== itemId);
       } else {
@@ -39,42 +44,6 @@ const cartSlice = createSlice({
     },
   },
 });
-
-export const sendCarData = (cart) => {
-  return async (dispatch) => {
-    dispatch(
-      uiActions.showNotification({
-        status: 'pending',
-        title: 'Sending...',
-        message: 'Sending cart data',
-      }),
-    );
-
-    await axios
-      .put(
-        'https://react-http-dd472-default-rtdb.firebaseio.com/cart.json',
-        cart,
-      )
-      .then(() => {
-        dispatch(
-          uiActions.showNotification({
-            status: 'success',
-            title: 'Success!',
-            message: 'Sent cart data successfully',
-          }),
-        );
-      })
-      .catch(() => {
-        dispatch(
-          uiActions.showNotification({
-            status: 'error',
-            title: 'Error!',
-            message: 'Sending cart data failed',
-          }),
-        );
-      });
-  };
-};
 
 export const cartActions = cartSlice.actions;
 
