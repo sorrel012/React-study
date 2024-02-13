@@ -23,6 +23,19 @@ const cartSlice = createSlice({
         existingItem.totalPrice += newItem.price;
       }
     },
-    removeItemFromCart(state, action) {},
+    removeItemFromCart(state, action) {
+      const itemId = action.payload;
+      const existingItem = state.items.find((item) => item.id === itemId);
+      if (existingItem === 1) {
+        state.items = state.items.filter((item) => item.id !== itemId);
+      } else {
+        existingItem.quantity--;
+        existingItem.totalPrice -= existingItem.price;
+      }
+    },
   },
 });
+
+export const cartActions = cartSlice.actions;
+
+export default cartSlice.reducer;
