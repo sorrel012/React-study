@@ -1,6 +1,5 @@
 // Challenge / Exercise
 
-//    Every list item should include a link to the respective EventDetailPage.js
 // 7. Output the ID of the selected event on the EventDetailPage.js
 // BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
 
