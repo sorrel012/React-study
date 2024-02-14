@@ -12,7 +12,6 @@ import EventsPage from './pages/EventsPage';
 import EventDetailPage from './pages/EventDetailPage';
 import EditEventPage from './pages/EditEventPage';
 import NewEventPage from './pages/NewEventPage';
-import { useSelector } from 'react-redux';
 
 const router = createBrowserRouter([
   {
@@ -29,8 +28,6 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const events = useSelector((state) => state.events);
-
   return <RouterProvider router={router} />;
 }
 
