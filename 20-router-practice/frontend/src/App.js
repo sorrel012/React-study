@@ -1,6 +1,5 @@
 // Challenge / Exercise
 
-// 5. Ensure that the links in MainNavigation receive an "active" class when active
 // 6. Output a list of dummy events to the EventsPage
 //    Every list item should include a link to the respective EventDetailPage.js
 // 7. Output the ID of the selected event on the EventDetailPage.js
@@ -13,6 +12,7 @@ import EventsPage from './pages/EventsPage';
 import EventDetailPage from './pages/EventDetailPage';
 import EditEventPage from './pages/EditEventPage';
 import NewEventPage from './pages/NewEventPage';
+import { useSelector } from 'react-redux';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +29,8 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const events = useSelector((state) => state.events);
+
   return <RouterProvider router={router} />;
 }
 
