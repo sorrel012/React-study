@@ -4,7 +4,6 @@ export const getEvents = async () => {
   let data = {
     status: '',
     result: '',
-    isLoading: true,
   };
 
   await axios
@@ -12,7 +11,7 @@ export const getEvents = async () => {
     .then((response) => {
       if (response.statusText === 'OK') {
         data.status = 'SUCCESS';
-        data.result = response.data;
+        data.result = response.data.events;
       }
     })
     .catch(() => {
