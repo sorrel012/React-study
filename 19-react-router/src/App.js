@@ -1,17 +1,12 @@
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomePage from './pages/Home';
 import ProductsPage from './pages/Products';
 
-const routeDefinitions = createRoutesFromElements(
-  <Route>
-    <Route path="/" element={<HomePage />} />
-  </Route>,
-);
+// const routeDefinitions = createRoutesFromElements(
+//   <Route>
+//     <Route path="/" element={<HomePage />} />
+//   </Route>,
+// );
 
 const router = createBrowserRouter([
   { path: '/', element: <HomePage /> },
