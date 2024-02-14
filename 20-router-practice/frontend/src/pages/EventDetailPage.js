@@ -12,7 +12,7 @@ function EventDetailPage() {
   return (
     <>
       <h1>Event Detail Page - {eventId}</h1>
-      <EventItem event={event} />
+      <EventItem event={event[0]} />
     </>
   );
 }
