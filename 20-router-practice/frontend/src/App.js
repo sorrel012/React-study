@@ -5,11 +5,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './pages/Root';
 import Homepage from './pages/Home';
-import EventsPage from './pages/Events';
+import EventsPage, { loader as eventsLoader } from './pages/Events';
 import EventDetailPage from './pages/EventDetail';
 import EditEventPage from './pages/EditEvent';
 import NewEventPage from './pages/NewEvent';
-import { getEvents } from './plugins/eventAxios';
 import EventsRootLayout from './pages/EventsRoot';
 
 const router = createBrowserRouter([
@@ -25,10 +24,7 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <EventsPage />,
-            loader: async () => {
-              const data = await getEvents();
-              return data.result;
-            },
+            loader: eventsLoader,
           },
           { path: ':eventId', element: <EventDetailPage /> },
           { path: 'new', element: <NewEventPage /> },

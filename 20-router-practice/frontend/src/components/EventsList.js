@@ -1,9 +1,7 @@
 import classes from './EventsList.module.css';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function EventsList() {
-  const events = useLoaderData();
-
+function EventsList({ events }) {
   return (
     <div className={classes.events}>
       <h1>All Events</h1>
