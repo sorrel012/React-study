@@ -19,11 +19,11 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Homepage /> },
       {
-        index: true,
+        path: 'events',
         element: <EventsRootLayout />,
         children: [
           {
-            path: 'events',
+            index: true,
             element: <EventsPage />,
             loader: async () => {
               const data = await getEvents();
