@@ -43,3 +43,22 @@ export const getEventDetail = async (id) => {
 
   return data;
 };
+
+export const registEvent = async (event) => {
+  let data = {
+    status: '',
+  };
+
+  await axios
+    .post('http://localhost:8080/events', event)
+    .then((response) => {
+      if (response.statusText === 'Created') {
+        data.status = 'SUCCESS';
+      }
+    })
+    .catch(() => {
+      data.status = 'FAIL';
+    });
+
+  return data;
+};
