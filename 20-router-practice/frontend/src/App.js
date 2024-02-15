@@ -9,6 +9,7 @@ import EventsPage from './pages/Events';
 import EventDetailPage from './pages/EventDetail';
 import EditEventPage from './pages/EditEvent';
 import NewEventPage from './pages/NewEvent';
+import { getEvents } from './plugins/eventAxios';
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,14 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <Homepage /> },
-      { path: 'events', element: <EventsPage /> },
+      {
+        path: 'events',
+        element: <EventsPage />,
+        loader: async () => {
+          const data = await getEvents();
+          return data.result;
+        },
+      },
       { path: 'events/:eventId', element: <EventDetailPage /> },
       { path: 'events/:eventId/edit', element: <EditEventPage /> },
       { path: 'events/new', element: <NewEventPage /> },
