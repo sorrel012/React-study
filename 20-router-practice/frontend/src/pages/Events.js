@@ -4,14 +4,23 @@ import { useLoaderData } from 'react-router-dom';
 import { getEvents } from '../plugins/eventAxios';
 
 function EventsPage() {
-  const events = useLoaderData();
+  const data = useLoaderData();
 
-  return <>{<EventsList events={events} />}</>;
+  if (data.isError) {
+    return <p>{data.message}</p>;
+  } else {
+    return <>{<EventsList events={data.result} />}</>;
+  }
 }
 
 export default EventsPage;
 
 export async function loader() {
   const data = await getEvents();
-  return data.result;
+
+  if (data.status === 'FAIL') {
+    return { isError: true, message: 'Could not fetch events' };
+  } else if (data.status === 'SUCCESS') {
+    return data;
+  }
 }
