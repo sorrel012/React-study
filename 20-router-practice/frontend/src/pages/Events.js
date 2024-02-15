@@ -6,13 +6,23 @@ import { eventActions } from '../store/event-slice';
 
 function EventsPage() {
   const dispatch = useDispatch();
-  const [events, setEvents] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [fetchedEvents, setFetchedEvents] = useState();
+  const [error, setError] = useState();
 
   const getEventsData = useCallback(async () => {
+    setIsLoading(true);
+
     const data = await getEvents();
-    const eventData = data.result;
-    setEvents(eventData);
-    dispatch(eventActions.replaceEvent(eventData));
+    if (data.status === 'SUCCESS') {
+      const eventData = data.result;
+      setFetchedEvents(eventData);
+      dispatch(eventActions.replaceEvent(eventData));
+    } else if (data.status === 'FAIL') {
+      setError('Fetching events failed.');
+    }
+
+    setIsLoading(false);
   }, [dispatch]);
 
   useEffect(() => {
@@ -21,8 +31,11 @@ function EventsPage() {
 
   return (
     <>
-      <h1>Events Page</h1>
-      <EventsList events={events} />
+      <div style={{ textAlign: 'center' }}>
+        {isLoading && <p>Loading...</p>}
+        {error && <p>{error}</p>}
+      </div>
+      {!isLoading && fetchedEvents && <EventsList events={fetchedEvents} />}
     </>
   );
 }
