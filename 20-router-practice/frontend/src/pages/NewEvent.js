@@ -1,7 +1,7 @@
 import React from 'react';
 import EventForm from '../components/EventForm';
 import { registEvent } from '../plugins/eventAxios';
-import { json } from 'react-router-dom';
+import { json, redirect } from 'react-router-dom';
 
 function NewEventPage() {
   return <EventForm />;
@@ -24,4 +24,6 @@ export async function action({ request, params }) {
   if (result.status === 'FAIL') {
     throw json({ message: 'Could not save event.' }, { status: 500 });
   }
+
+  return redirect('/events');
 }

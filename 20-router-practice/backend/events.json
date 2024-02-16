@@ -1,11 +1,1 @@
-{
-  "events": [
-    {
-      "id": "e1",
-      "title": "A dummy event",
-      "date": "2023-02-22",
-      "image": "https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg",
-      "description": "Join this amazing event and connect with fellow developers."
-    }
-  ]
-}
+{"events":[{"title":"Valentine Day","image":"https://images.thequint.com/thequint%2F2023-02%2F3d846992-e55a-46f3-8e0e-a36db4e7c2c4%2FHappy_Valentine_s_Day_2023.jpg?auto=format%2Ccompress&fmt=webp&width=720","date":"2024-02-14","description":"Valentine Day Party!","id":"857e0d54-a9b3-4648-b225-5cd23df23e4f"},{"id":"e1","title":"A dummy event","date":"2023-02-22","image":"https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg","description":"Join this amazing event and connect with fellow developers."}]}
