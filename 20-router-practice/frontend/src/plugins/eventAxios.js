@@ -47,6 +47,7 @@ export const getEventDetail = async (id) => {
 export const registEvent = async (event) => {
   let data = {
     status: '',
+    result: {},
   };
 
   await axios
@@ -56,8 +57,9 @@ export const registEvent = async (event) => {
         data.status = 'SUCCESS';
       }
     })
-    .catch(() => {
+    .catch((error) => {
       data.status = 'FAIL';
+      data.result = error.response;
     });
 
   return data;

@@ -21,6 +21,10 @@ export async function action({ request, params }) {
 
   const result = await registEvent(eventData);
 
+  if (result.result.status === 422) {
+    return result.result.data;
+  }
+
   if (result.status === 'FAIL') {
     throw json({ message: 'Could not save event.' }, { status: 500 });
   }
