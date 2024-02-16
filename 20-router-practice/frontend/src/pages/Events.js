@@ -21,7 +21,7 @@ async function loadEvents() {
   const data = await getEvents();
 
   if (data.status === 'FAIL') {
-    json(
+    throw json(
       { message: 'Could not fetch Events' },
       {
         status: 500,
@@ -33,7 +33,7 @@ async function loadEvents() {
 }
 
 export async function loader() {
-  defer({
+  return defer({
     events: loadEvents(),
   });
 }
