@@ -1,6 +1,7 @@
 import { getEventDetail } from '../plugins/eventAxios';
-import { json, useRouteLoaderData } from 'react-router-dom';
+import { json, redirect, useRouteLoaderData } from 'react-router-dom';
 import EventItem from '../components/EventItem';
+import axios from 'axios';
 
 function EventDetailPage() {
   const event = useRouteLoaderData('event-detail');
@@ -24,4 +25,19 @@ export async function loader({ request, params }) {
   } else if (data.status === 'SUCCESS') {
     return data.result.event;
   }
+}
+
+export async function action({ params, request }) {
+  const eventId = params.eventId;
+
+  await axios
+    .request({
+      method: request.method,
+      url: `http://localhost:8080/events/${eventId}`,
+    })
+    .catch(() => {
+      throw json({ message: 'Could not delete event.' }, { status: 500 });
+    });
+
+  return redirect('/events');
 }
