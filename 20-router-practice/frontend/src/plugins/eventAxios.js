@@ -44,14 +44,18 @@ export const getEventDetail = async (id) => {
   return data;
 };
 
-export const registEvent = async (event) => {
+export const registEvent = async (url, event, method) => {
   let data = {
     status: '',
     result: {},
   };
 
   await axios
-    .post('http://localhost:8080/events', event)
+    .request({
+      method: method,
+      url: url,
+      data: event,
+    })
     .then((response) => {
       if (response.statusText === 'Created') {
         data.status = 'SUCCESS';
