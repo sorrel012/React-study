@@ -1,17 +1,23 @@
-import React from 'react';
-import EventsList from '../components/EventsList';
-import { json, useLoaderData } from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { Await, defer, json, useLoaderData } from 'react-router-dom';
 import { getEvents } from '../plugins/eventAxios';
+import EventsList from '../components/EventsList';
 
 function EventsPage() {
-  const events = useLoaderData();
+  const events = useLoaderData().events;
 
-  return <>{<EventsList events={events} />}</>;
+  return (
+    <Suspense fallback={<p style={{ textAlign: 'center' }}>Loading...</p>}>
+      <Await resolve={events}>
+        {(loadedEvents) => <EventsList events={loadedEvents} />}
+      </Await>
+    </Suspense>
+  );
 }
 
 export default EventsPage;
 
-export async function loader() {
+async function loadEvents() {
   const data = await getEvents();
 
   if (data.status === 'FAIL') {
@@ -24,4 +30,10 @@ export async function loader() {
   } else if (data.status === 'SUCCESS') {
     return data.result;
   }
+}
+
+export async function loader() {
+  defer({
+    events: loadEvents(),
+  });
 }
