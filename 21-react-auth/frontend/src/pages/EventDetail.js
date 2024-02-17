@@ -1,14 +1,16 @@
 import { Suspense } from 'react';
 import {
-  useRouteLoaderData,
+  Await,
+  defer,
   json,
   redirect,
-  defer,
-  Await,
+  useRouteLoaderData,
 } from 'react-router-dom';
 
 import EventItem from '../components/EventItem';
 import EventsList from '../components/EventsList';
+import axios from 'axios';
+import { getAuthToken } from '../util/auth';
 
 function EventDetailPage() {
   const { event, events } = useRouteLoaderData('event-detail');
@@ -39,7 +41,7 @@ async function loadEvent(id) {
       { message: 'Could not fetch details for selected event.' },
       {
         status: 500,
-      }
+      },
     );
   } else {
     const resData = await response.json();
@@ -59,7 +61,7 @@ async function loadEvents() {
       { message: 'Could not fetch events.' },
       {
         status: 500,
-      }
+      },
     );
   } else {
     const resData = await response.json();
@@ -78,17 +80,19 @@ export async function loader({ request, params }) {
 
 export async function action({ params, request }) {
   const eventId = params.eventId;
-  const response = await fetch('http://localhost:8080/events/' + eventId, {
-    method: request.method,
-  });
+  const token = getAuthToken();
 
-  if (!response.ok) {
-    throw json(
-      { message: 'Could not delete event.' },
-      {
-        status: 500,
-      }
-    );
-  }
+  await axios
+    .request({
+      method: request.method,
+      url: `http://localhost:8080/events/${eventId}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .catch(() => {
+      throw json({ message: 'Could not delete event.' }, { status: 500 });
+    });
+
   return redirect('/events');
 }
