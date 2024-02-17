@@ -3,6 +3,7 @@ import { Outlet, useLoaderData } from 'react-router-dom';
 import MainNavigation from '../components/MainNavigation';
 import { useEffect } from 'react';
 import { logout } from './Logout';
+import { getTokenDuration } from '../util/auth';
 
 function RootLayout() {
   const token = useLoaderData();
@@ -12,12 +13,14 @@ function RootLayout() {
       return;
     }
 
-    setTimeout(
-      () => {
-        logout();
-      },
-      60 * 60 * 1000,
-    );
+    const tokenDuration = getTokenDuration();
+    if (tokenDuration < 0) {
+      logout();
+    }
+
+    setTimeout(() => {
+      logout();
+    }, tokenDuration);
   }, [token]);
 
   return (
