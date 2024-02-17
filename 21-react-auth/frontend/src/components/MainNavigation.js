@@ -2,6 +2,7 @@ import { NavLink, useNavigate, useRouteLoaderData } from 'react-router-dom';
 
 import classes from './MainNavigation.module.css';
 import NewsletterSignup from './NewsletterSignup';
+import { logout } from '../pages/Logout';
 
 function MainNavigation() {
   const navigate = useNavigate();
@@ -9,8 +10,7 @@ function MainNavigation() {
   const token = useRouteLoaderData('token');
 
   const logoutHandler = () => {
-    localStorage.removeItem('token');
-    navigate('/');
+    logout();
   };
 
   return (
