@@ -1,9 +1,19 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import classes from './MainNavigation.module.css';
 import NewsletterSignup from './NewsletterSignup';
+import { getAuthToken } from '../util/auth';
 
 function MainNavigation() {
+  const navigate = useNavigate();
+
+  const isUser = getAuthToken() !== null;
+
+  const logoutHandler = () => {
+    localStorage.removeItem('token');
+    navigate('/');
+  };
+
   return (
     <header className={classes.header}>
       <nav>
@@ -39,16 +49,23 @@ function MainNavigation() {
               Newsletter
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/auth?mode=login"
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }
-            >
-              Authentication
-            </NavLink>
-          </li>
+          {!isUser && (
+            <li>
+              <NavLink
+                to="/auth?mode=login"
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+              >
+                Authentication
+              </NavLink>
+            </li>
+          )}
+          {isUser && (
+            <li>
+              <button onClick={logoutHandler}>Logout</button>
+            </li>
+          )}
         </ul>
       </nav>
       <NewsletterSignup />
