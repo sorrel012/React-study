@@ -1,13 +1,12 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useRouteLoaderData } from 'react-router-dom';
 
 import classes from './MainNavigation.module.css';
 import NewsletterSignup from './NewsletterSignup';
-import { getAuthToken } from '../util/auth';
 
 function MainNavigation() {
   const navigate = useNavigate();
 
-  const isUser = getAuthToken() !== null;
+  const token = useRouteLoaderData('token');
 
   const logoutHandler = () => {
     localStorage.removeItem('token');
@@ -49,7 +48,7 @@ function MainNavigation() {
               Newsletter
             </NavLink>
           </li>
-          {!isUser && (
+          {!token && (
             <li>
               <NavLink
                 to="/auth?mode=login"
@@ -61,7 +60,7 @@ function MainNavigation() {
               </NavLink>
             </li>
           )}
-          {isUser && (
+          {token && (
             <li>
               <button onClick={logoutHandler}>Logout</button>
             </li>
