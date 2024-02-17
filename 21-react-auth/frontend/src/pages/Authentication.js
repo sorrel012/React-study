@@ -55,9 +55,10 @@ export async function action({ request }) {
       authData,
     );
 
-    if (response.statusText === 'OK' || response.statusText === 'Created') {
-      return redirect('/');
-    }
+    const token = response.data.token;
+    localStorage.setItem('token', token);
+
+    return redirect('/');
   } catch (error) {
     if (error.response.status === 422 || error.response.status === 401) {
       return error.response.data;
