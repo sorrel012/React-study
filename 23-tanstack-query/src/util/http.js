@@ -1,8 +1,14 @@
 import axios from 'axios';
 
-export async function fetchEvents() {
+export async function fetchEvents({ signal, searchTerm }) {
+  let url = 'http://localhost:3000/events';
+
+  if (searchTerm) {
+    url += `?search=${searchTerm}`;
+  }
+
   try {
-    const { data } = await axios.get('http://localhost:3000/events');
+    const { data } = await axios.get(url, { signal: signal });
     return data.events;
   } catch (error) {
     if (error.response) {
