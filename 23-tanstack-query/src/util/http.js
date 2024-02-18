@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-async function fetchEvents() {
+export async function fetchEvents() {
   try {
     const { data } = await axios.get('http://localhost:3000/events');
     return data.events;
