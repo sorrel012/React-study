@@ -6,7 +6,7 @@
 
 body {
   margin: 0;
-  font-family: 'Lato', serif;
+  font-family: 'Quicksand', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(#222c31, #111d32);
@@ -134,7 +134,7 @@ ul {
 
 .event-item h2 {
   font-size: 1.15rem;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   margin: 0;
   color: #d7bfcb;
 }
