@@ -21,6 +21,7 @@ export default function EventDetails() {
 
   const {
     mutate: deleteEventDetails,
+    isLoading: isMutationLoading,
     isError: isMutationError,
     error: mutationError,
   } = useMutation({
@@ -67,17 +68,6 @@ export default function EventDetails() {
     );
   }
 
-  if (isMutationError) {
-    content = (
-      <div id="devent-details-content" className="center">
-        <ErrorBlock
-          title="Failed to delete event details"
-          message={mutationError.info?.message || 'Please try again later.'}
-        />
-      </div>
-    );
-  }
-
   if (data) {
     const formattedDate = new Date(data.date).toLocaleDateString('ko-KR', {
       day: 'numeric',
@@ -117,12 +107,25 @@ export default function EventDetails() {
           <h2>Are you sure?</h2>
           <p>This action cannot be undone.</p>
           <div className="form-actions">
-            <button onClick={handleStopDelete} className="button-text">
-              Cancel
-            </button>
-            <button onClick={handleDelete} className="button">
-              Delete
-            </button>
+            {isMutationLoading && <p>Deleting, please wait...</p>}
+            {!isMutationLoading && (
+              <>
+                <button onClick={handleStopDelete} className="button-text">
+                  Cancel
+                </button>
+                <button onClick={handleDelete} className="button">
+                  Delete
+                </button>
+              </>
+            )}
+            {isMutationError && (
+              <ErrorBlock
+                title="Failed to delete event"
+                message={
+                  mutationError.info?.message || 'Please try again later.'
+                }
+              />
+            )}
           </div>
         </Modal>
       )}
