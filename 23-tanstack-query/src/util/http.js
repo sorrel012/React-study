@@ -25,3 +25,26 @@ export async function fetchEvents({ signal, searchTerm }) {
     }
   }
 }
+
+export async function createNewEvent(eventData) {
+  try {
+    const { data } = await axios.post(
+      'http://localhost:3000/events',
+      eventData,
+    );
+    return data.event;
+  } catch (error) {
+    if (error.response) {
+      const customError = new Error(
+        'An error occurred while creating the event',
+      );
+      customError.code = error.response.status;
+      customError.info = error.response.data;
+      throw customError;
+    } else if (error.request) {
+      throw new Error('No response was received');
+    } else {
+      throw new Error('Error in setting up the request');
+    }
+  }
+}
