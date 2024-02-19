@@ -122,10 +122,9 @@ export async function deleteEvent({ id }) {
 
 export async function updateEvent({ id, event }) {
   try {
-    const response = await axios.put(
-      `http://localhost:3000/events/${id}`,
+    const response = await axios.put(`http://localhost:3000/events/${id}`, {
       event,
-    );
+    });
 
     return response.data;
   } catch (error) {

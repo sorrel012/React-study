@@ -18,6 +18,9 @@ export default function EditEvent() {
 
   const { mutate } = useMutation({
     mutationFn: updateEvent,
+    onSuccess: () => {
+      navigate('../');
+    },
   });
 
   function handleSubmit(formData) {
