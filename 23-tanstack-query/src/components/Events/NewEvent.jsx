@@ -34,7 +34,7 @@ export default function NewEvent() {
       </EventForm>
       {isError && (
         <ErrorBlock
-          title="Filed to create event"
+          title="Failed to create event"
           message={
             error.info?.message ||
             'Failed to create event. Please check your inputs and try agin later'
