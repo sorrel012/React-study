@@ -51,11 +51,11 @@ export async function createNewEvent(eventData) {
 
 export async function fetchSelectableImages({ signal }) {
   try {
-    const { images } = axios.get(`http://localhost:3000/events/images`, {
+    const response = await axios.get('http://localhost:3000/events/images', {
       signal,
     });
 
-    return images;
+    return response.data.images;
   } catch (error) {
     if (error.response) {
       const customError = new Error(
