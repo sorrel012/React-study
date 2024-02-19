@@ -97,3 +97,25 @@ export async function fetchEvent({ id, signal }) {
     }
   }
 }
+
+export async function deleteEvent({ id }) {
+  try {
+    console.log(id);
+    const response = await axios.delete(`http://localhost:3000/events/${id}`);
+
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      const customError = new Error(
+        'An error occurred while deleting the event',
+      );
+      customError.code = error.response.status;
+      customError.info = error.response.data;
+      throw customError;
+    } else if (error.request) {
+      throw new Error('No response was received');
+    } else {
+      throw new Error('Error in setting up the request');
+    }
+  }
+}
