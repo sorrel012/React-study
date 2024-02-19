@@ -48,3 +48,26 @@ export async function createNewEvent(eventData) {
     }
   }
 }
+
+export async function fetchSelectableImages({ signal }) {
+  try {
+    const { images } = axios.get(`http://localhost:3000/events/images`, {
+      signal,
+    });
+
+    return images;
+  } catch (error) {
+    if (error.response) {
+      const customError = new Error(
+        'An error occurred while fetching the images',
+      );
+      customError.code = error.response.status;
+      customError.info = error.response.data;
+      throw customError;
+    } else if (error.request) {
+      throw new Error('No response was received');
+    } else {
+      throw new Error('Error in setting up the request');
+    }
+  }
+}
