@@ -2,7 +2,7 @@ import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 
 import Header from '../Header.jsx';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { deleteEvent, fetchEvent } from '../../util/http.js';
+import { deleteEvent, fetchEvent, queryClient } from '../../util/http.js';
 import ErrorBlock from '../UI/ErrorBlock.jsx';
 import LoadingIndicator from '../UI/LoadingIndicator.jsx';
 
@@ -22,6 +22,9 @@ export default function EventDetails() {
   } = useMutation({
     mutationFn: deleteEvent,
     onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['events'],
+      });
       navigate('/events');
     },
   });
@@ -63,6 +66,12 @@ export default function EventDetails() {
   }
 
   if (data) {
+    const formattedDate = new Date(data.date).toLocaleDateString('ko-KR', {
+      day: 'numeric',
+      month: 'numeric',
+      year: 'numeric',
+    });
+
     content = (
       <>
         <header>
@@ -78,7 +87,7 @@ export default function EventDetails() {
             <div>
               <p id="event-details-location">{data.location}</p>
               <time dateTime={`Todo-DateT$Todo-Time`}>
-                {data.date} @ {data.time}
+                {formattedDate} {data.time}
               </time>
             </div>
             <p id="event-details-description">{data.description}</p>
