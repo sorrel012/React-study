@@ -40,9 +40,31 @@ export default function EventDetails() {
     );
   }
 
-  if (!isLoading) {
+  if (isError) {
     content = (
-      <article id="event-details">
+      <div id="devent-details-content" className="center">
+        <ErrorBlock
+          title="Failed to load event details"
+          message={error.info?.message || 'Please try again later.'}
+        />
+      </div>
+    );
+  }
+
+  if (isMutationError) {
+    content = (
+      <div id="devent-details-content" className="center">
+        <ErrorBlock
+          title="Failed to delete event details"
+          message={mutationError.info?.message || 'Please try again later.'}
+        />
+      </div>
+    );
+  }
+
+  if (data) {
+    content = (
+      <>
         <header>
           <h1>{data.title}</h1>
           <nav>
@@ -51,7 +73,7 @@ export default function EventDetails() {
           </nav>
         </header>
         <div id="event-details-content">
-          <img src={`http://localhost:3000/${data.image}`} alt="" />
+          <img src={`http://localhost:3000/${data.image}`} alt={data.title} />
           <div id="event-details-info">
             <div>
               <p id="event-details-location">{data.location}</p>
@@ -62,25 +84,7 @@ export default function EventDetails() {
             <p id="event-details-description">{data.description}</p>
           </div>
         </div>
-      </article>
-    );
-  }
-
-  if (isError) {
-    content = (
-      <ErrorBlock
-        title="Failed to load event details"
-        message={error.info?.message || 'Please try again later.'}
-      />
-    );
-  }
-
-  if (isMutationError) {
-    content = (
-      <ErrorBlock
-        title="Failed to delete event details"
-        message={mutationError.info?.message || 'Please try again later.'}
-      />
+      </>
     );
   }
 
@@ -92,7 +96,7 @@ export default function EventDetails() {
           View all Events
         </Link>
       </Header>
-      {content}
+      <article id="event-details">{content}</article>
     </>
   );
 }
