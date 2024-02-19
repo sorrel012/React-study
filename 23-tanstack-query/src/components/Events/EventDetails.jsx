@@ -21,7 +21,7 @@ export default function EventDetails() {
 
   const {
     mutate: deleteEventDetails,
-    isLoading: isMutationLoading,
+    isPending,
     isError: isMutationError,
     error: mutationError,
   } = useMutation({
@@ -107,8 +107,8 @@ export default function EventDetails() {
           <h2>Are you sure?</h2>
           <p>This action cannot be undone.</p>
           <div className="form-actions">
-            {isMutationLoading && <p>Deleting, please wait...</p>}
-            {!isMutationLoading && (
+            {isPending && <p>Deleting, please wait...</p>}
+            {!isPending && (
               <>
                 <button onClick={handleStopDelete} className="button-text">
                   Cancel
