@@ -30,6 +30,60 @@ export default function EventDetails() {
     deleteEventDetails({ id });
   };
 
+  let content;
+
+  if (isLoading || isMutationError) {
+    content = (
+      <div id="event-details-content" className="center">
+        <LoadingIndicator />
+      </div>
+    );
+  }
+
+  if (!isLoading) {
+    content = (
+      <article id="event-details">
+        <header>
+          <h1>{data.title}</h1>
+          <nav>
+            <button onClick={handleDelete}>Delete</button>
+            <Link to="edit">Edit</Link>
+          </nav>
+        </header>
+        <div id="event-details-content">
+          <img src={`http://localhost:3000/${data.image}`} alt="" />
+          <div id="event-details-info">
+            <div>
+              <p id="event-details-location">{data.location}</p>
+              <time dateTime={`Todo-DateT$Todo-Time`}>
+                {data.date} @ {data.time}
+              </time>
+            </div>
+            <p id="event-details-description">{data.description}</p>
+          </div>
+        </div>
+      </article>
+    );
+  }
+
+  if (isError) {
+    content = (
+      <ErrorBlock
+        title="Failed to load event details"
+        message={error.info?.message || 'Please try again later.'}
+      />
+    );
+  }
+
+  if (isMutationError) {
+    content = (
+      <ErrorBlock
+        title="Failed to delete event details"
+        message={mutationError.info?.message || 'Please try again later.'}
+      />
+    );
+  }
+
   return (
     <>
       <Outlet />
@@ -38,46 +92,7 @@ export default function EventDetails() {
           View all Events
         </Link>
       </Header>
-      {isLoading && (
-        <div style={{ textAlign: 'center' }}>
-          <LoadingIndicator />
-        </div>
-      )}
-      {!isLoading && (
-        <article id="event-details">
-          <header>
-            <h1>{data.title}</h1>
-            <nav>
-              <button onClick={handleDelete}>Delete</button>
-              <Link to="edit">Edit</Link>
-            </nav>
-          </header>
-          <div id="event-details-content">
-            <img src={`http://localhost:3000/${data.image}`} alt="" />
-            <div id="event-details-info">
-              <div>
-                <p id="event-details-location">{data.location}</p>
-                <time dateTime={`Todo-DateT$Todo-Time`}>
-                  {data.date} @ {data.time}
-                </time>
-              </div>
-              <p id="event-details-description">{data.description}</p>
-            </div>
-          </div>
-        </article>
-      )}
-      {isError && (
-        <ErrorBlock
-          title="Failed to load event details"
-          message={error.info?.message || 'Please try again later.'}
-        />
-      )}
-      {isMutationError && (
-        <ErrorBlock
-          title="Failed to delete event details"
-          message={mutationError.info?.message || 'Please try again later.'}
-        />
-      )}
+      {content}
     </>
   );
 }
