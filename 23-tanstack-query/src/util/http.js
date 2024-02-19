@@ -119,3 +119,27 @@ export async function deleteEvent({ id }) {
     }
   }
 }
+
+export async function updateEvent({ id, event }) {
+  try {
+    const response = await axios.put(
+      `http://localhost:3000/events/${id}`,
+      event,
+    );
+
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      const customError = new Error(
+        'An error occurred while updating the event',
+      );
+      customError.code = error.response.status;
+      customError.info = error.response.data;
+      throw customError;
+    } else if (error.request) {
+      throw new Error('No response was received');
+    } else {
+      throw new Error('Error in setting up the request');
+    }
+  }
+}
