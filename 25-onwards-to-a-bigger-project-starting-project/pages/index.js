@@ -7,6 +7,14 @@ const DUMMY_MEETUPS = [
     image:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Lehesten_2012_x14.JPG/1024px-Lehesten_2012_x14.JPG',
     address: 'Some address 5, 12345 Some City',
+    description: 'This is a first meetup!',
+  },
+  {
+    id: 'm2',
+    title: 'A Second Meetup',
+    image:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Lehesten_2012_x14.JPG/1024px-Lehesten_2012_x14.JPG',
+    address: 'Some address 10, 12345 Some City',
     description: 'This is a second meetup!',
   },
 ];
