@@ -7,6 +7,7 @@
 #front-setting
 node_modules
 /package-lock.json
+.next
 
 ### IntelliJ IDEA ###
 .idea
