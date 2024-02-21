@@ -9,6 +9,7 @@ const pool = new Pool({
 });
 
 async function handler(req, res) {
+  console.log(req, 'req');
   if (req.method === 'POST') {
     const { title, image, address, description } = req.body;
 
