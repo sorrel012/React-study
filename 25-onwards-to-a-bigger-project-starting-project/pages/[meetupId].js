@@ -22,7 +22,7 @@ export async function getStaticPaths() {
   client.release();
 
   return {
-    fallback: false,
+    fallback: 'blocking',
     paths: rows.map((row) => ({ params: { meetupId: row.id } })),
   };
 }
