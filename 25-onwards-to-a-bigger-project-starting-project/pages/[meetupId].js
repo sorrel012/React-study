@@ -1,4 +1,5 @@
 import MeetupDetail from '../components/meetups/MeetupDetail';
+import { pool } from '../config/connectDB';
 
 function MeetupDetails(props) {
   const data = props.meetupData;
@@ -14,20 +15,16 @@ function MeetupDetails(props) {
 }
 
 export async function getStaticPaths() {
+  const client = await pool.connect();
+
+  const { rows } = await client.query('SELECT id FROM meetup');
+  console.log('rows: ', rows);
+
+  client.release();
+
   return {
     fallback: false,
-    paths: [
-      {
-        params: {
-          meetupId: 'm1',
-        },
-      },
-      {
-        params: {
-          meetupId: 'm2',
-        },
-      },
-    ],
+    paths: rows.map((row) => ({ params: { meetupId: row.id } })),
   };
 }
 
