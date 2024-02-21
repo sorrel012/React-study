@@ -18,7 +18,6 @@ export async function getStaticPaths() {
   const client = await pool.connect();
 
   const { rows } = await client.query('SELECT id FROM meetup');
-  console.log('rows: ', rows);
 
   client.release();
 
@@ -28,19 +27,20 @@ export async function getStaticPaths() {
   };
 }
 
-export function getStaticProps(context) {
+export async function getStaticProps(context) {
   const meetupId = context.params.meetupId;
+
+  const client = await pool.connect();
+
+  const { rows } = await client.query('SELECT * FROM meetup WHERE id = $1', [
+    meetupId,
+  ]);
+
+  client.release();
 
   return {
     props: {
-      meetupData: {
-        id: meetupId,
-        image:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Lehesten_2012_x14.JPG/1024px-Lehesten_2012_x14.JPG',
-        title: 'A First Meetup',
-        address: 'Some Street 5, Some City',
-        description: 'This is a first meetup',
-      },
+      meetupData: rows[0],
     },
   };
 }
