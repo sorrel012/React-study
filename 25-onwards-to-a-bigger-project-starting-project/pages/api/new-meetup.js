@@ -23,7 +23,9 @@ async function handler(req, res) {
       client.release();
 
       // 응답을 클라이언트에 보냄
-      res.status(201).json({ message: 'Meetup inserted!' });
+      res
+        .status(201)
+        .json({ message: 'Meetup inserted!', data: result.rows[0] });
     } catch (err) {
       console.error('Database connection error', err.stack);
       res.status(500).json({ message: 'Database connection failed' });
