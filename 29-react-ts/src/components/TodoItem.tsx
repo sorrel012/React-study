@@ -1,8 +1,7 @@
 import React from 'react';
-import Todo from '../models/todo.ts';
 
-const TodoItem: React.FC<{ item: Todo }> = (props) => {
-  return <li key={props.item.id}>{props.item.text}</li>;
+const TodoItem: React.FC<{ text: string }> = (props) => {
+  return <li>{props.text}</li>;
 };
 
 export default TodoItem;
