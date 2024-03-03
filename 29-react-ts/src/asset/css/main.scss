@@ -152,7 +152,7 @@ button {
   z-index: 10;
   text-align: center;
 
-  button {
+  .confirm-button {
     border: none;
     border-radius: 5px;
     padding: 7px 10px 5px;
@@ -161,7 +161,7 @@ button {
     color: white;
     cursor: pointer;
   }
-  button:hover {
+  .confirm-button:hover {
     background-color: #3b1c75;
   }
 }

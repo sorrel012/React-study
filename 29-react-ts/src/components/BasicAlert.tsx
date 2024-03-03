@@ -8,7 +8,7 @@ const BasicAlert: React.FC<{ onDone: () => void; title: string }> = ({
     <Modal onClose={onDone}>
       <h2>{title}</h2>
       <p className="button-group">
-        <button type="button" onClick={onDone}>
+        <button type="button" onClick={onDone} className="confirm-button">
           확인
         </button>
       </p>
