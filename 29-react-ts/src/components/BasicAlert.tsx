@@ -7,7 +7,7 @@ const BasicAlert: React.FC<{ onDone: () => void; title: string }> = ({
   return (
     <Modal onClose={onDone}>
       <h2>{title}</h2>
-      <p className="button-group">
+      <p>
         <button type="button" onClick={onDone} className="confirm-button">
           확인
         </button>

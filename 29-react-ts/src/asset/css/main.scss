@@ -161,6 +161,13 @@ button {
     cursor: pointer;
   }
 
+  .button-group {
+    width: 60%;
+    margin: 16px auto;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
   .confirm-button {
     @include button-layout;
     background-color: #6a48ab;
@@ -182,8 +189,9 @@ button {
     background-color: #d33;
   }
   .delete-button:hover {
-    background-color: #8a0d0d;
+    background-color: #c20000;
   }
+
 }
 
 .backdrop {

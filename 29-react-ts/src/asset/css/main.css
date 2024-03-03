@@ -131,6 +131,12 @@ button {
   z-index: 10;
   text-align: center;
 }
+.modal .button-group {
+  width: 60%;
+  margin: 16px auto;
+  display: flex;
+  justify-content: space-evenly;
+}
 .modal .confirm-button {
   border: none;
   border-radius: 5px;
@@ -165,7 +171,7 @@ button {
   background-color: #d33;
 }
 .modal .delete-button:hover {
-  background-color: #8a0d0d;
+  background-color: #c20000;
 }
 
 .backdrop {
