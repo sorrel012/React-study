@@ -2,7 +2,11 @@ import React from 'react';
 import Todo from '../models/todo.ts';
 import TodoItem from './TodoItem.tsx';
 
-const Todos: React.FC<{ items: Todo[] }> = (props) => {
+interface TodosProps {
+  items: Todo[];
+}
+
+const Todos: React.FC<TodosProps> = (props) => {
   return (
     <ul>
       {props.items.map((item) => (
