@@ -19,6 +19,7 @@ const NewTodo = () => {
     }
 
     dispatch(todoActions.addTodo(new Todo(enteredText)));
+    todoTextInputRef.current!.value = '';
   };
 
   return (
