@@ -3,6 +3,8 @@ import Todo from '../models/todo.ts';
 import { useDispatch } from 'react-redux';
 import { todoActions } from '../store';
 import Swal from 'sweetalert2';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 interface TodoItemProps {
   todo: Todo;
@@ -33,7 +35,15 @@ const TodoItem: React.FC<TodoItemProps> = (props) => {
     });
   };
 
-  return <li onClick={removeTodoHandler}>{props.todo.text}</li>;
+  return (
+    <li>
+      <div className="checkbox"></div>
+      <div className="text">{props.todo.text}</div>
+      <button onClick={removeTodoHandler}>
+        <FontAwesomeIcon icon={faTrash} />
+      </button>
+    </li>
+  );
 };
 
 export default TodoItem;

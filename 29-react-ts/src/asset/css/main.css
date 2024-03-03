@@ -48,6 +48,35 @@ button {
 }
 #main-todos .todo-list {
   height: 80%;
+  text-align: left;
+  padding: 20px;
+}
+#main-todos .todo-list li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+#main-todos .todo-list li .checkbox {
+  width: 10px;
+  height: 10px;
+  border: 1px solid grey;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+#main-todos .todo-list li .text {
+  flex-grow: 1;
+  margin-right: 10px;
+  color: #484848;
+  font-size: large;
+}
+#main-todos .todo-list li button {
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  color: #ab0000;
 }
 #main-todos .todo-new {
   height: 10%;
@@ -67,7 +96,6 @@ button {
   border-radius: 5px;
 }
 #main-todos .todo-new button {
-  width: 5%;
   border: none;
   background-color: #fff;
   cursor: pointer;

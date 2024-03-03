@@ -34,6 +34,13 @@ button {
   flex-direction: column;
 }
 
+@mixin button-default {
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
 #root {
   @include flex-layout;
   justify-content: center;
@@ -56,7 +63,36 @@ button {
 
   .todo-list {
     height: 80%;
+    text-align: left;
+    padding: 20px;
 
+    li {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 0;
+
+      .checkbox {
+        width: 10px;
+        height: 10px;
+        border: 1px solid grey;
+        border-radius: 3px;
+        margin-right: 5px;
+      }
+
+      .text {
+        flex-grow: 1;
+        margin-right: 10px;
+        color: #484848;
+        font-size: large;
+      }
+
+      button {
+        @include button-default;
+        color: #ab0000;
+      }
+    }
   }
 
   .todo-new {
@@ -79,11 +115,7 @@ button {
     }
 
     button {
-      width: 5%;
-      border: none;
-      background-color: #fff;
-      cursor: pointer;
-      border-radius: 50%;
+      @include button-default;
     }
 
     button:focus-visible {
