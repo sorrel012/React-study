@@ -61,6 +61,24 @@ button {
   background-color: white;
   box-shadow: 5px 3px 8px 0 rgba(66, 66, 66, 0.37);
 
+  header {
+    text-transform: uppercase;
+    margin-top: 10px;
+    font-size: xx-large;
+    font-weight: bold;
+    color: #ffffff;
+    animation: sparkle 1s infinite alternate;
+  }
+
+  @keyframes sparkle {
+    from {
+      text-shadow: 0 0 20px #fff3df, 0 0 20px #ffdfd3, 0 0 20px #fde2cb, 0 0 20px #fcf0d9;
+    }
+    to {
+      text-shadow: 0 0 20px #e5d5ff, 0 0 20px #bcb9fd, 0 0 30px #e2dbff, 0 0 30px #d1d4ff;
+    }
+  }
+
   .todo-list {
     height: 80%;
     text-align: left;
