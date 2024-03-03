@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Todo from '../models/todo.ts';
 import { useDispatch } from 'react-redux';
-import { todoActions } from '../store';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { AnimatePresence } from 'framer-motion';
 import ChoiceAlert from './ChoiceAlert.tsx';
+import BasicAlert from './BasicAlert.tsx';
+import { todoActions } from '../store';
 
 interface TodoItemProps {
   todo: Todo;
@@ -13,8 +14,19 @@ interface TodoItemProps {
 
 const TodoItem: React.FC<TodoItemProps> = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isBasicModalOpen, setIsBasicModalOpen] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isDelete) {
+      setTimeout(() => {
+        dispatch(todoActions.removeTodo(props.todo.id));
+      }, 2000);
+      setIsDelete(false);
+      setIsBasicModalOpen(true);
+    }
+  }, [isDelete]);
 
   function handleDone() {
     setIsModalOpen(false);
@@ -22,14 +34,11 @@ const TodoItem: React.FC<TodoItemProps> = (props) => {
 
   function handleDelete() {
     setIsDelete(true);
+    setIsModalOpen(false);
   }
 
   const removeTodoHandler = () => {
     setIsModalOpen(true);
-
-    if (isDelete) {
-      dispatch(todoActions.removeTodo(props.todo.id));
-    }
   };
 
   return (
@@ -41,6 +50,9 @@ const TodoItem: React.FC<TodoItemProps> = (props) => {
             onDone={handleDone}
             onDelete={handleDelete}
           />
+        )}
+        {isBasicModalOpen && (
+          <BasicAlert title="삭제되었습니다." onDone={handleDone} />
         )}
       </AnimatePresence>
 
