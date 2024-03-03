@@ -8,10 +8,10 @@ function App() {
   const todos = useSelector((state: { todos: Todo[] }) => state.todos);
 
   return (
-    <div>
-      <NewTodo />
+    <main id="main-todos">
       <Todos items={todos} />
-    </div>
+      <NewTodo />
+    </main>
   );
 }
 
