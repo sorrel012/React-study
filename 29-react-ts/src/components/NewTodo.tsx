@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { useDispatch } from 'react-redux';
 import { todoActions } from '../store';
 import Todo from '../models/todo.ts';
+import '../asset/css/main.css';
 
 const NewTodo = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const NewTodo = () => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className="todo-new">
       <label htmlFor="todo-input">할 일</label>
       <input id="todo-input" ref={todoTextInputRef} type="text" />
       <button>+</button>
