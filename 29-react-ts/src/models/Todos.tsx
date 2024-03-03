@@ -1,5 +1,5 @@
-import Todo from '../models/todo.ts';
-import TodoItem from './TodoItem.tsx';
+import Todo from './todo.ts';
+import TodoItem from '../components/TodoItem.tsx';
 import '../asset/css/main.css';
 
 interface TodosProps {
