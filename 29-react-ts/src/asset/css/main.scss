@@ -40,12 +40,12 @@ button {
   background: linear-gradient(#fdf8e0, #ece4ff);
 }
 
-
 #main-todos {
   max-width: 1000px;
   width: 50%;
   height: 80%;
   margin: auto;
+  padding: 0 10px;
   text-align: center;
   border: 1px solid #c4c4c4;
   border-radius: 30px;
@@ -61,5 +61,33 @@ button {
 
   .todo-new {
     height: 10%;
+    width: 100%;
+    border-top: 1px dashed #8672a2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    label {
+      margin-right: 10px;
+    }
+
+    input {
+      flex-grow: 1;
+      margin-right: 10px;
+      border: 1px solid #c4c4c4;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 5%;
+      border: none;
+      background-color: #fff;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    button:focus-visible {
+      outline: none;
+    }
   }
 }

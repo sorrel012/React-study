@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { todoActions } from '../store';
 import Todo from '../models/todo.ts';
 import '../asset/css/main.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const NewTodo = () => {
   const dispatch = useDispatch();
@@ -27,7 +29,9 @@ const NewTodo = () => {
     <form onSubmit={submitHandler} className="todo-new">
       <label htmlFor="todo-input">할 일</label>
       <input id="todo-input" ref={todoTextInputRef} type="text" />
-      <button>+</button>
+      <button>
+        <FontAwesomeIcon icon={faPlus} />
+      </button>
     </form>
   );
 };
