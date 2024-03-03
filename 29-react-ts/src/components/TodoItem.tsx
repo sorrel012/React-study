@@ -4,7 +4,11 @@ import { useDispatch } from 'react-redux';
 import { todoActions } from '../store';
 import Swal from 'sweetalert2';
 
-const TodoItem: React.FC<{ todo: Todo }> = (props) => {
+interface TodoItemProps {
+  todo: Todo;
+}
+
+const TodoItem: React.FC<TodoItemProps> = (props) => {
   const dispatch = useDispatch();
 
   const removeTodoHandler = () => {
