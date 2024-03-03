@@ -6,9 +6,11 @@ import NewTodo from './components/NewTodo.tsx';
 function App() {
   const todos = [new Todo('Learn React'), new Todo('Learn TypeScript')];
 
+  const addTodoHandler = (text: string) => {};
+
   return (
     <div>
-      <NewTodo />
+      <NewTodo onAddTodo={addTodoHandler} />
       <Todos items={todos} />
     </div>
   );
