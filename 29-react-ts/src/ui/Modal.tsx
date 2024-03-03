@@ -1,12 +1,13 @@
 import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 
-const Modal: React.FC<{ title: string; children: any; onClose: () => {} }> = (
-  props,
-) => {
+const Modal: React.FC<{ children: any; onClose: () => void }> = ({
+  children,
+  onClose,
+}) => {
   return createPortal(
     <>
-      <div className="backdrop" onClick={props.onClose} />
+      <div className="backdrop" onClick={onClose} />
       <motion.dialog
         variants={{
           hidden: { opacity: 0, y: 30 },
@@ -18,8 +19,7 @@ const Modal: React.FC<{ title: string; children: any; onClose: () => {} }> = (
         open
         className="modal"
       >
-        <h2>{props.title}</h2>
-        {props.children}
+        {children}
       </motion.dialog>
     </>,
     document.getElementById('modal')!,
