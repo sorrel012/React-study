@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import Swal from 'sweetalert2';
 import { useDispatch } from 'react-redux';
 import { todoActions } from '../store';
+import Todo from '../models/todo.ts';
 
 const NewTodo = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const NewTodo = () => {
       return;
     }
 
-    dispatch(todoActions.addTodo(enteredText));
+    dispatch(todoActions.addTodo(new Todo(enteredText)));
   };
 
   return (
