@@ -21,4 +21,12 @@ input, button {
   font-family: "GmarketSansMedium", BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue";
 }
 
+#main-todos {
+  max-width: 1000px;
+  width: 50%;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
 /*# sourceMappingURL=main.css.map */
