@@ -1,4 +1,4 @@
-import Todo from './todo.ts';
+import Todo from '../models/todo.ts';
 import TodoItem from '../components/TodoItem.tsx';
 import '../asset/css/main.css';
 

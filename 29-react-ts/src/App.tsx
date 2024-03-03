@@ -1,5 +1,5 @@
-import Todos from './components/Todos.tsx';
-import NewTodo from './components/NewTodo.tsx';
+import Todos from './pages/Todos.tsx';
+import NewTodo from './pages/NewTodo.tsx';
 import { useSelector } from 'react-redux';
 import Todo from './models/todo.ts';
 import './asset/css/main.css';

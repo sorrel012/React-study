@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import Swal from 'sweetalert2';
 import { useDispatch } from 'react-redux';
 import { todoActions } from '../store';
-import Todo from './todo.ts';
+import Todo from '../models/todo.ts';
 import '../asset/css/main.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
