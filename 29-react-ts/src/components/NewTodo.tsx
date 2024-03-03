@@ -1,7 +1,10 @@
 import { useRef } from 'react';
 import Swal from 'sweetalert2';
+import { useDispatch } from 'react-redux';
+import { todoActions } from '../store';
 
-const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
+const NewTodo = () => {
+  const dispatch = useDispatch();
   const todoTextInputRef = useRef<HTMLInputElement>(null);
 
   const submitHandler = (event: React.FormEvent) => {
@@ -14,7 +17,7 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
       return;
     }
 
-    props.onAddTodo(enteredText);
+    dispatch(todoActions.addTodo(enteredText));
   };
 
   return (
