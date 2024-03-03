@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import Swal from 'sweetalert2';
 
-const NewTodo = () => {
+const NewTodo: React.FC<{ onAddTodo: Function }> = (props) => {
   const todoTextInputRef = useRef<HTMLInputElement>(null);
 
   const submitHandler = (event: React.FormEvent) => {
@@ -13,12 +13,14 @@ const NewTodo = () => {
       Swal.fire('내용을 입력해 주세요.');
       return;
     }
+
+    props.onAddTodo(enteredText);
   };
 
   return (
     <form onSubmit={submitHandler}>
       <label htmlFor="todo-input">Todo text</label>
-      <input id="todo-input" ref="todoTextInputRef" type="text" />
+      <input id="todo-input" ref={todoTextInputRef} type="text" />
       <button>Add Todo</button>
     </form>
   );
