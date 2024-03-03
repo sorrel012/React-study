@@ -152,17 +152,37 @@ button {
   z-index: 10;
   text-align: center;
 
-  .confirm-button {
+  @mixin button-layout {
     border: none;
     border-radius: 5px;
     padding: 7px 10px 5px;
     font-size: large;
-    background-color: #6a48ab;
     color: white;
     cursor: pointer;
   }
+
+  .confirm-button {
+    @include button-layout;
+    background-color: #6a48ab;
+  }
   .confirm-button:hover {
     background-color: #3b1c75;
+  }
+
+  .cancel-button {
+    @include button-layout;
+    background-color: #3085d6;
+  }
+  .cancel-button:hover {
+    background-color: #203eb9;
+  }
+
+  .delete-button {
+    @include button-layout;
+    background-color: #d33;
+  }
+  .delete-button:hover {
+    background-color: #8a0d0d;
   }
 }
 

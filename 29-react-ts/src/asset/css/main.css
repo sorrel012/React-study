@@ -136,12 +136,36 @@ button {
   border-radius: 5px;
   padding: 7px 10px 5px;
   font-size: large;
-  background-color: #6a48ab;
   color: white;
   cursor: pointer;
+  background-color: #6a48ab;
 }
 .modal .confirm-button:hover {
   background-color: #3b1c75;
+}
+.modal .cancel-button {
+  border: none;
+  border-radius: 5px;
+  padding: 7px 10px 5px;
+  font-size: large;
+  color: white;
+  cursor: pointer;
+  background-color: #3085d6;
+}
+.modal .cancel-button:hover {
+  background-color: #203eb9;
+}
+.modal .delete-button {
+  border: none;
+  border-radius: 5px;
+  padding: 7px 10px 5px;
+  font-size: large;
+  color: white;
+  cursor: pointer;
+  background-color: #d33;
+}
+.modal .delete-button:hover {
+  background-color: #8a0d0d;
 }
 
 .backdrop {
