@@ -4,27 +4,23 @@ const Father = styled.div`
   display: flex;
 `;
 
-const BoxOne = styled.div`
-  background-color: teal;
+const Box = styled.div`
+  background-color: ${({ bgColor }) => bgColor};
   width: 100px;
   height: 100px;
 `;
 
-const BoxTwo = styled.div`
-  background-color: tomato;
-  width: 100px;
-  height: 100px;
+const Text = styled.span`
+  color: white;
 `;
-
-const Text = styled.span``;
 
 function App() {
   return (
     <Father>
-      <BoxOne>
+      <Box bgColor="teal">
         <Text>Hello</Text>
-      </BoxOne>
-      <BoxTwo />
+      </Box>
+      <Box bgColor="tomato" />
     </Father>
   );
 }
