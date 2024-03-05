@@ -28,7 +28,11 @@ const Box = styled.div`
   align-items: center;
   animation: ${rotationAnimation} 1s linear infinite;
   span {
-    font-size: xxx-large;
+    font-size: xx-large;
+    &:hover {
+      font-size: xxx-large;
+      cursor: pointer;
+    }
   }
 `;
 
