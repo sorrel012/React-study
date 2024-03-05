@@ -10,16 +10,10 @@ const Box = styled.div`
   height: 100px;
 `;
 
-const Text = styled.span`
-  color: white;
-`;
-
 function App() {
   return (
     <Father>
-      <Box bgColor="teal">
-        <Text>Hello</Text>
-      </Box>
+      <Box bgColor="teal" />
       <Box bgColor="tomato" />
     </Father>
   );
