@@ -1,23 +1,32 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-const Father = styled.div`
+const Wrapper = styled.div`
   display: flex;
 `;
 
-const Btn = styled.button`
-  color: white;
+const rotationAnimation = keyframes`
+  from{
+    transform: rotate(0);
+    border-radius: 0;
+  }
+  to {
+    transform: rotate(360deg);
+    border-radius: 100px;
+  }
+`;
+
+const Box = styled.div`
+  height: 200px;
+  width: 200px;
   background-color: tomato;
-  border: 0;
-  border-radius: 15px;
+  animation: ${rotationAnimation} 1s linear infinite;
 `;
 
 function App() {
   return (
-    <Father as="header">
-      <Btn as="a" href="/">
-        Log in
-      </Btn>
-    </Father>
+    <Wrapper>
+      <Box />
+    </Wrapper>
   );
 }
 
