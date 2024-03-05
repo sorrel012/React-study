@@ -5,13 +5,17 @@ const Wrapper = styled.div`
 `;
 
 const rotationAnimation = keyframes`
-  from{
+  0% {
     transform: rotate(0);
     border-radius: 0;
   }
-  to {
+  50% {
     transform: rotate(360deg);
     border-radius: 100px;
+  }
+  100% {
+    transform: rotate(0);
+    border-radius: 0;
   }
 `;
 
