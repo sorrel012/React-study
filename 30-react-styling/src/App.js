@@ -13,8 +13,10 @@ const Btn = styled.button`
 
 function App() {
   return (
-    <Father>
-      <Btn>Log in</Btn>
+    <Father as="header">
+      <Btn as="a" href="/">
+        Log in
+      </Btn>
     </Father>
   );
 }
