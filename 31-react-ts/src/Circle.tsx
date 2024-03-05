@@ -19,7 +19,7 @@ interface CircleProps {
 }
 
 function Circle({ bgColor, borderColor }: CircleProps) {
-  return <Container bgColor={bgColor} borderColor={borderColor ?? 'bgColor'} />;
+  return <Container bgColor={bgColor} borderColor={borderColor ?? bgColor} />;
 }
 
 export default Circle;
