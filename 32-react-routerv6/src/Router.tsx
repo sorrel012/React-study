@@ -17,7 +17,10 @@ const router = createBrowserRouter([
       {
         path: 'users/:userId',
         element: <User />,
-        children: [{ path: 'followers', element: <Followers /> }],
+        children: [
+          { path: 'followers', element: <Followers /> },
+          { path: 'followers', element: <Followers /> },
+        ],
       },
     ],
     errorElement: <NotFound />,
