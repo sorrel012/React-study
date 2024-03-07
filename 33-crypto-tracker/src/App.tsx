@@ -4,6 +4,13 @@ import { RouterProvider } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -50,6 +57,17 @@ const GlobalStyle = createGlobalStyle`
   table {
     border-collapse: collapse;
     border-spacing: 0;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'GmarketSansMedium', sans-serif;
+    background-color: ${(props) => props.theme.bgColor};
+    color: ${(props) => props.theme.textColor}
+  }
+  a{
+    text-decoration: none;
   }
 `;
 
