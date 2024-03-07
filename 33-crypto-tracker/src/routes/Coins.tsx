@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Coins() {
-  return <div></div>;
+  return <h1>Coins</h1>;
 }
 
 export default Coins;
