@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   padding: 20px 20px 0;
+  max-width: 480px;
+  margin: 0 auto;
 `;
 
 const Header = styled.header`
