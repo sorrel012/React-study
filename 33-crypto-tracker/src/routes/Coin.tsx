@@ -1,5 +1,5 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -26,17 +26,26 @@ const Loader = styled.span`
   display: block;
 `;
 
-function Coin() {
-  const { coinId } = useParams();
-
-  return <Container>
-    <Header>
-      <Title>코인</Title>
-    </Header>
-    {loading ? (
-      <Loader>Loading...</Loader>
-    ): null
+interface LocationInterface {
+  state: {
+    name: string;
+    rank: number;
+  };
 }
-  </Container>
+
+function Coin() {
+  const [loading, setLoading] = useState(true);
+  const { coinId } = useParams();
+  const { state } = useLocation() as LocationInterface;
+
+  return (
+    <Container>
+      <Header>
+        <Title>{state.name}</Title>
+      </Header>
+      {loading ? <Loader>Loading...</Loader> : null}
+    </Container>
+  );
+}
 
 export default Coin;
