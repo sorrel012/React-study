@@ -92,8 +92,8 @@ function Coin() {
   const [loading, setLoading] = useState(true);
   const { coinId } = useParams();
   const { state } = useLocation() as LocationInterface;
-  const [info, setInfo] = useState({});
-  const [priceInfo, setPriceInfo] = useState({});
+  const [info, setInfo] = useState<IInfoData>();
+  const [priceInfo, setPriceInfo] = useState<IPriceData>();
 
   useEffect(() => {
     (async () => {
