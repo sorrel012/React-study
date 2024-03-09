@@ -64,7 +64,7 @@ const Tabs = styled.div`
   gap: 10px;
 `;
 
-const Tab = styled.span<{ isActive: boolean }>`
+const Tab = styled.span`
   text-align: center;
   text-transform: uppercase;
   font-size: 12px;
@@ -72,8 +72,6 @@ const Tab = styled.span<{ isActive: boolean }>`
   background-color: rgba(0, 0, 0, 0.5);
   padding: 7px 0;
   border-radius: 10px;
-  color: ${(props) =>
-    props.isActive ? props.theme.accentColor : props.theme.textColor};
   a {
     display: block;
   }
@@ -191,12 +189,30 @@ function Coin() {
               <span>{priceInfo?.max_supply}</span>
             </OverviewItem>
           </Overview>
-          <NavLink to="chart" end>
-            Chart
-          </NavLink>
-          <NavLink to="price" end>
-            Price
-          </NavLink>
+          <Tabs>
+            <Tab>
+              <NavLink
+                to="chart"
+                className={({ isActive }) =>
+                  isActive ? 'isActive' : undefined
+                }
+                end
+              >
+                Chart
+              </NavLink>
+            </Tab>
+            <Tab>
+              <NavLink
+                to="price"
+                className={({ isActive }) =>
+                  isActive ? 'isActive' : undefined
+                }
+                end
+              >
+                Price
+              </NavLink>
+            </Tab>
+          </Tabs>
           <Outlet />
         </>
       )}

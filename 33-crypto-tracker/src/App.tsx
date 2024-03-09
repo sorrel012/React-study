@@ -72,6 +72,9 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
+  .isActive {
+    color: ${(props) => props.theme.accentColor} 
+  }
 `;
 
 function App() {
