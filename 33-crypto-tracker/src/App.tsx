@@ -2,6 +2,7 @@ import React from 'react';
 import router from './router';
 import { RouterProvider } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -82,6 +83,7 @@ function App() {
     <>
       <GlobalStyle />
       <RouterProvider router={router} />
+      <ReactQueryDevtools initialIsOpen />
     </>
   );
 }
