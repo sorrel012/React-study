@@ -213,7 +213,7 @@ function Coin() {
               </NavLink>
             </Tab>
           </Tabs>
-          <Outlet />
+          <Outlet context={coinId} />
         </>
       )}
     </Container>
