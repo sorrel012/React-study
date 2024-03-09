@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { useQuery } from '@tanstack/react-query';
+import { fetchCoinInfo, fetchCoinTickers } from '../api';
 
 const Container = styled.div`
   padding: 20px 20px 0;
@@ -135,32 +137,30 @@ interface IPriceData {
 function Coin() {
   const { coinId } = useParams();
   const { state } = useLocation() as LocationInterface;
-  const [loading, setLoading] = useState(true);
-  const [info, setInfo] = useState<IInfoData>();
-  const [priceInfo, setPriceInfo] = useState<IPriceData>();
 
-  useEffect(() => {
-    (async () => {
-      const infoData = await (
-        await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`)
-      ).json();
-      const priceData = await (
-        await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)
-      ).json();
-      setInfo(infoData);
-      setPriceInfo(priceData);
-      setLoading(false);
-    })();
-  }, [coinId]);
+  const { data: info, isLoading: isInfoDataLoading } = useQuery<IInfoData>({
+    queryKey: ['coinInfo', coinId],
+    queryFn: () => fetchCoinInfo(coinId!),
+  });
+
+  const { data: priceInfo, isLoading: isPriceDataLoading } =
+    useQuery<IPriceData>({
+      queryKey: ['priceInfo', coinId],
+      queryFn: () => fetchCoinTickers(coinId!),
+    });
 
   return (
     <Container>
       <Header>
         <Title>
-          {state?.name ? state.name : loading ? 'Loading..' : info?.name}
+          {state?.name
+            ? state.name
+            : isInfoDataLoading || isPriceDataLoading
+              ? 'Loading..'
+              : info?.name}
         </Title>
       </Header>
-      {loading ? (
+      {isInfoDataLoading || isPriceDataLoading ? (
         <Loader>Loading...</Loader>
       ) : (
         <>
