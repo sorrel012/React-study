@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -167,6 +167,12 @@ function Coin() {
               <span>{priceInfo?.max_supply}</span>
             </OverviewItem>
           </Overview>
+          <NavLink to="chart" end>
+            Chart
+          </NavLink>
+          <NavLink to="price" end>
+            Price
+          </NavLink>
           <Outlet />
         </>
       )}
