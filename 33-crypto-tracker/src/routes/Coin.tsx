@@ -3,6 +3,7 @@ import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useQuery } from '@tanstack/react-query';
 import { fetchCoinInfo, fetchCoinTickers } from '../api';
+import { Helmet } from 'react-helmet';
 
 const Container = styled.div`
   padding: 20px 20px 0;
@@ -152,6 +153,15 @@ function Coin() {
 
   return (
     <Container>
+      <Helmet>
+        <title>
+          {state?.name
+            ? state.name
+            : isInfoDataLoading || isPriceDataLoading
+              ? 'Loading..'
+              : info?.name}
+        </title>
+      </Helmet>
       <Header>
         <Title>
           {state?.name
