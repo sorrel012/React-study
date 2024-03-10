@@ -70,12 +70,26 @@ const GlobalStyle = createGlobalStyle`
     color:${(props) => props.theme.textColor};
     line-height: 1.2;
   }
+  button {
+    font-family: 'GmarketSansMedium', sans-serif;
+  }
   a{
     text-decoration: none;
     color: inherit;
   }
   .isActive {
     color: ${(props) => props.theme.accentColor} 
+  }
+  .link-button {
+    background-color: ${(props) => props.theme.bgColor};
+    color: ${(props) => props.theme.textColor};
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 10px;
+    &:hover {
+      cursor: pointer;
+      color: ${(props) => props.theme.accentColor};
+    }
   }
 `;
 

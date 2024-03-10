@@ -1,5 +1,11 @@
 import React from 'react';
-import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from 'react-router-dom';
 import styled from 'styled-components';
 import { useQuery } from '@tanstack/react-query';
 import { fetchCoinInfo, fetchCoinTickers } from '../api';
@@ -78,6 +84,10 @@ const Tab = styled.span`
   a {
     display: block;
   }
+`;
+
+const HomeLayout = styled.div`
+  text-align: center;
 `;
 
 interface IInfoData {
@@ -225,6 +235,11 @@ function Coin() {
             </Tab>
           </Tabs>
           <Outlet context={coinId} />
+          <HomeLayout>
+            <Link to=".." className="link-button">
+              Home
+            </Link>
+          </HomeLayout>
         </>
       )}
     </Container>
