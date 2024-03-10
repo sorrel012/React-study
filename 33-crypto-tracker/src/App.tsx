@@ -1,8 +1,9 @@
 import React from 'react';
 import router from './router';
 import { RouterProvider } from 'react-router-dom';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { lightTheme } from './theme';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -81,9 +82,11 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <RouterProvider router={router} />
-      <ReactQueryDevtools initialIsOpen />
+      <ThemeProvider theme={lightTheme}>
+        <GlobalStyle />
+        <RouterProvider router={router} />
+        <ReactQueryDevtools initialIsOpen />
+      </ThemeProvider>
     </>
   );
 }
