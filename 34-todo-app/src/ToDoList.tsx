@@ -35,34 +35,33 @@
 // }
 
 import { useForm } from 'react-hook-form';
+import { atom, useRecoilValue, useSetRecoilState } from 'recoil';
+
+const toDoState = atom({
+  key: 'toDo',
+  default: [],
+});
 
 interface IForm {
-  todo: string;
+  toDo: string;
 }
 
 function ToDoList() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setError,
-  } = useForm<IForm>();
-  const onValid = (data: IForm) => {
-    if (data.todo.indexOf('xx') !== -1) {
-      setError(
-        'todo',
-        { message: '비속어가 포함되어 있습니다.' },
-        { shouldFocus: true },
-      );
-    }
+  const value = useRecoilValue(toDoState);
+  const modFn = useSetRecoilState(toDoState);
+  const { register, handleSubmit, setValue } = useForm<IForm>();
+  const handleValid = (data: IForm) => {
+    console.log('add to do', data.toDo);
+    setValue('toDo', '');
   };
 
   return (
     <div>
-      <span>{errors.todo?.message}</span>
-      <form onSubmit={handleSubmit(onValid)}>
+      <h1>To Dos</h1>
+      <hr />
+      <form onSubmit={handleSubmit(handleValid)}>
         <input
-          {...register('todo', {
+          {...register('toDo', {
             required: 'ToDo is required',
             maxLength: {
               value: 100,
@@ -73,6 +72,7 @@ function ToDoList() {
         />
         <button>Add</button>
       </form>
+      <ul></ul>
     </div>
   );
 }
