@@ -45,14 +45,21 @@ function ToDoList() {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<IForm>();
   const onValid = (data: IForm) => {
-    console.log(data);
+    if (data.todo.indexOf('xx') !== -1) {
+      setError(
+        'todo',
+        { message: '비속어가 포함되어 있습니다.' },
+        { shouldFocus: true },
+      );
+    }
   };
 
   return (
     <div>
-      <span>{errors.todo?.message as string}</span>
+      <span>{errors.todo?.message}</span>
       <form onSubmit={handleSubmit(onValid)}>
         <input
           {...register('todo', {
