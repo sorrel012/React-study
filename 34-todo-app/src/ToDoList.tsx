@@ -36,17 +36,26 @@
 
 import { useForm } from 'react-hook-form';
 
+interface IForm {
+  todo: string;
+}
+
 function ToDoList() {
-  const { register, handleSubmit } = useForm();
-  const onValid = (data: any) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IForm>();
+  const onValid = (data: IForm) => {
     console.log(data);
   };
 
   return (
     <div>
+      <span>{errors.todo?.message as string}</span>
       <form onSubmit={handleSubmit(onValid)}>
         <input
-          {...register('toDo', {
+          {...register('todo', {
             required: 'ToDo is required',
             maxLength: {
               value: 100,
