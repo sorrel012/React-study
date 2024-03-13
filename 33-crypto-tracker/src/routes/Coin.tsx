@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  Link,
   NavLink,
   Outlet,
   useLocation,
+  useNavigate,
   useParams,
 } from 'react-router-dom';
 import styled from 'styled-components';
@@ -149,6 +149,7 @@ interface IPriceData {
 function Coin() {
   const { coinId } = useParams();
   const { state } = useLocation() as LocationInterface;
+  const navigate = useNavigate();
 
   const { data: info, isLoading: isInfoDataLoading } = useQuery<IInfoData>({
     queryKey: ['coinInfo', coinId],
@@ -161,6 +162,10 @@ function Coin() {
       queryFn: () => fetchCoinTickers(coinId!),
       refetchInterval: 10000,
     });
+
+  const handleNavigate = () => {
+    navigate('../');
+  };
 
   return (
     <Container>
@@ -237,9 +242,12 @@ function Coin() {
           </Tabs>
           <Outlet context={coinId} />
           <HomeLayout>
-            <Link to=".." className="link-button">
-              Home
-            </Link>
+            <span
+              onClick={handleNavigate}
+              className="material-symbols-outlined link-button"
+            >
+              home
+            </span>
           </HomeLayout>
         </>
       )}

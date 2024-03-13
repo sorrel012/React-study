@@ -47,6 +47,7 @@ const Title = styled.h1`
 `;
 
 const Loader = styled.span`
+  margin-top: 50px;
   text-align: center;
   display: block;
 `;
