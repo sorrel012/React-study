@@ -84,7 +84,7 @@ const GlobalStyle = createGlobalStyle`
   }
   .link-button {
     background-color: ${(props) => props.theme.cardBgColor};
-    border: 1px dashed ${(props) => props.theme.accentColor};
+    border: 1px solid ${(props) => props.theme.accentColor};
     color: ${(props) => props.theme.textColor};
     padding: 5px 10px;
     border-radius: 10px;
@@ -93,6 +93,18 @@ const GlobalStyle = createGlobalStyle`
       color: ${(props) => props.theme.accentColor};
     }
   }
+   .material-symbols-outlined {
+     font-variation-settings:
+             'FILL' 0,
+             'wght' 400,
+             'GRAD' 0,
+             'opsz' 24;
+   }
+   .theme-mode-button {
+     color: ${(props) => props.theme.accentColor};
+     background-color: ${(props) => props.theme.cardBgColor};
+     border-radius: 50%;
+     padding: 3px;}
 `;
 
 function App() {

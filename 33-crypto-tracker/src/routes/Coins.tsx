@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { fetchCoins } from '../util/api';
 import { Helmet } from 'react-helmet';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { isDarkAtom } from '../util/atoms';
 
 const Container = styled.div`
@@ -18,7 +18,7 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: -35px;
 `;
 
 const CoinList = styled.ul``;
@@ -57,6 +57,12 @@ const Img = styled.img`
   margin-right: 10px;
 `;
 
+const Mode = styled.div`
+  text-align: end;
+  margin-bottom: 10px;
+  cursor: pointer;
+`;
+
 interface ICoin {
   id: string;
   name: string;
@@ -68,7 +74,7 @@ interface ICoin {
 }
 
 function Coins() {
-  const setDarkAtom = useSetRecoilState(isDarkAtom);
+  const [isDark, setDarkAtom] = useRecoilState(isDarkAtom);
   const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
   const { data, isLoading } = useQuery<ICoin[]>({
     queryKey: ['allCoins'],
@@ -82,12 +88,29 @@ function Coins() {
       </Helmet>
       <Header>
         <Title>코인</Title>
-        <button onClick={toggleDarkAtom}>Toggle Mode</button>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>
       ) : (
         <CoinList>
+          <Mode>
+            {!isDark && (
+              <span
+                onClick={toggleDarkAtom}
+                className="material-symbols-outlined theme-mode-button"
+              >
+                dark_mode
+              </span>
+            )}
+            {isDark && (
+              <span
+                onClick={toggleDarkAtom}
+                className="material-symbols-outlined theme-mode-button"
+              >
+                light_mode
+              </span>
+            )}
+          </Mode>
           {data?.slice(0, 100).map((coin) => (
             <Coin key={coin.id}>
               <Link to={`/${coin.id}`} state={{ name: coin.name }}>
