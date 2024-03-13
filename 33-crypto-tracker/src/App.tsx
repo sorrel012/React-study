@@ -83,9 +83,9 @@ const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.accentColor} 
   }
   .link-button {
-    background-color: ${(props) => props.theme.bgColor};
+    background-color: ${(props) => props.theme.cardBgColor};
+    border: 1px dashed ${(props) => props.theme.accentColor};
     color: ${(props) => props.theme.textColor};
-    border: 1px solid rgba(0, 0, 0, 0.5);
     padding: 5px 10px;
     border-radius: 10px;
     &:hover {
