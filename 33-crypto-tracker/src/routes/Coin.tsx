@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import styled from 'styled-components';
 import { useQuery } from '@tanstack/react-query';
-import { fetchCoinInfo, fetchCoinTickers } from '../api';
+import { fetchCoinInfo, fetchCoinTickers } from '../util/api';
 import { Helmet } from 'react-helmet';
 
 const Container = styled.div`

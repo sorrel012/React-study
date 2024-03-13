@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { fetchCoins } from '../api';
+import { fetchCoins } from '../util/api';
 import { Helmet } from 'react-helmet';
 import { useSetRecoilState } from 'recoil';
-import { isDarkAtom } from '../atoms';
+import { isDarkAtom } from '../util/atoms';
 
 const Container = styled.div`
   padding: 20px 20px 0;

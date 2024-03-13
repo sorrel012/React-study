@@ -1,9 +1,9 @@
 import { useOutletContext } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { fetchCoinHistory } from '../api';
+import { fetchCoinHistory } from '../util/api';
 import ApexChart from 'react-apexcharts';
 import { useRecoilValue } from 'recoil';
-import { isDarkAtom } from '../atoms';
+import { isDarkAtom } from '../util/atoms';
 
 interface IHistorical {
   time_open: number;

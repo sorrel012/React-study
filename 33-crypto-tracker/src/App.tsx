@@ -5,7 +5,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { darkTheme, lightTheme } from './theme';
 import { useRecoilValue } from 'recoil';
-import { isDarkAtom } from './atoms';
+import { isDarkAtom } from './util/atoms';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
