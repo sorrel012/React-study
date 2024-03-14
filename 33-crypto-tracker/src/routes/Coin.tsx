@@ -73,20 +73,6 @@ const Tabs = styled.div`
   gap: 10px;
 `;
 
-const Tab = styled.span`
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 400;
-  background-color: ${(props) => props.theme.accentColor};
-  color: ${(props) => props.theme.bgColor};
-  padding: 7px 0;
-  border-radius: 10px;
-  a {
-    display: block;
-  }
-`;
-
 const HomeLayout = styled.div`
   text-align: center;
 `;
@@ -217,28 +203,20 @@ function Coin() {
             </OverviewItem>
           </Overview>
           <Tabs>
-            <Tab>
-              <NavLink
-                to="chart"
-                className={({ isActive }) =>
-                  isActive ? 'isActive' : undefined
-                }
-                end
-              >
-                Chart
-              </NavLink>
-            </Tab>
-            <Tab>
-              <NavLink
-                to="price"
-                className={({ isActive }) =>
-                  isActive ? 'isActive' : undefined
-                }
-                end
-              >
-                Price
-              </NavLink>
-            </Tab>
+            <NavLink
+              to="chart"
+              className={({ isActive }) => (isActive ? 'tab isActive' : 'tab')}
+              end
+            >
+              Chart
+            </NavLink>
+            <NavLink
+              to="price"
+              className={({ isActive }) => (isActive ? 'tab isActive' : 'tab')}
+              end
+            >
+              Price
+            </NavLink>
           </Tabs>
           <Outlet context={coinId} />
           <HomeLayout>

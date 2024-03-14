@@ -79,8 +79,22 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
+  .tab {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 400;
+    background-color: ${(props) => props.theme.accentColor};
+    opacity: 0.5;
+    color: ${(props) => props.theme.bgColor};
+    padding: 7px 0;
+    border-radius: 10px;
+    a {
+      display: block;
+    }
+  }
   .isActive {
-    color: ${(props) => props.theme.accentColor} 
+    opacity: 1;
   }
   .link-button {
     background-color: ${(props) => props.theme.cardBgColor};
