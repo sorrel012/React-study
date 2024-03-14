@@ -20,11 +20,8 @@ function App() {
               </Draggable>
               <Draggable draggableId="second" index={1}>
                 {(provided) => (
-                  <li
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                  >
+                  <li ref={provided.innerRef} {...provided.draggableProps}>
+                    <span {...provided.dragHandleProps}>🔥</span>
                     Two
                   </li>
                 )}
