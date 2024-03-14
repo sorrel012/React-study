@@ -5,7 +5,7 @@ import ApexChart from 'react-apexcharts';
 import { useRecoilValue } from 'recoil';
 import { isDarkAtom } from '../util/atoms';
 
-interface IHistorical {
+export interface IHistorical {
   time_open: number;
   time_close: number;
   open: number;

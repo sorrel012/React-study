@@ -98,7 +98,7 @@ interface IInfoData {
   last_data_at: string;
 }
 
-interface IPriceData {
+export interface IPriceData {
   id: string;
   name: string;
   symbol: string;
