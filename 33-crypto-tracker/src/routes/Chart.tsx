@@ -24,17 +24,24 @@ function Chart() {
     queryFn: () => fetchCoinHistory(coinId),
   });
 
+  const candlestickData = data?.map((item) => {
+    return {
+      x: new Date(item.time_close * 1000),
+      y: [item.open, item.high, item.low, item.close].map(Number),
+    };
+  });
+
   return (
     <div>
       {isLoading ? (
         'Loading chart...'
       ) : (
         <ApexChart
-          type="line"
+          type="candlestick"
           series={[
             {
               name: 'sales',
-              data: data?.map((price) => Number(price.close))!,
+              data: candlestickData!,
             },
           ]}
           options={{
@@ -71,7 +78,7 @@ function Chart() {
             fill: {
               type: 'gradient',
               gradient: {
-                gradientToColors: ['#0be881'],
+                gradientToColors: ['#fff3ef'],
                 stops: [0, 100],
               },
             },
@@ -79,6 +86,14 @@ function Chart() {
             tooltip: {
               y: {
                 formatter: (value) => `$${value.toFixed(2)}`,
+              },
+            },
+            plotOptions: {
+              candlestick: {
+                colors: {
+                  upward: '#0618c5',
+                  downward: '#c50404',
+                },
               },
             },
           }}
